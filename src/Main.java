@@ -7,11 +7,11 @@ import java.util.List;
 
 public class Main {
 
-    public final static int SIZE_PLAYER = 23;
-    public final static int SIZE_BOMB = 23/2;
+    public final static int SIZE_PLAYER = 22;
+    public final static int SIZE_BOMB = 10;
 
-    public final static double WIN_HEIGHT = 640.0;
-    public final static double WIN_WIDTH= 640.0;
+    public final static double WIN_HEIGHT = 630.0;
+    public final static double WIN_WIDTH= 630.0;
     public final static int FPS = 1000;
     public final static double SIZE_BLOC = WIN_WIDTH/21;
     public static Labyrinthe laby = new Labyrinthe();
@@ -48,6 +48,7 @@ public class Main {
             cocos.dropBomb(laby,System.currentTimeMillis()/1000);
 
             tristan.move(laby);
+            
             tristan.dropBomb(laby, System.currentTimeMillis()/1000);
 
             if (!listAnimationBomb.isEmpty()) {
@@ -60,6 +61,7 @@ public class Main {
 
             laby.dessineLaby();
             StdDraw.show(1000/FPS);
+            
         }
     }
 

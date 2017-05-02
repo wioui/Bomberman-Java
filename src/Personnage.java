@@ -189,6 +189,7 @@ public class Personnage extends Labyrinthe {
         StdDraw.setPenColor(this.couleur);
          // dessin du personnage
         StdDraw.filledCircle(posX, posY, SIZE_PLAYER / 2);
+        
 
     }
 
@@ -200,8 +201,6 @@ public class Personnage extends Labyrinthe {
             for (int y = 0; y < 17; y++) {
                 if (laby.getMap()[x][y] == 1 || laby.getMap()[x][y] == 2 || laby.getMap()[x][y] == 9 ) {
                     Box obstacle = new Box((x) * SIZE_BLOC, (y) * SIZE_BLOC, SIZE_BLOC, SIZE_BLOC);
-                    StdDraw.setPenColor(Color.yellow);
-                    StdDraw.filledSquare(x * SIZE_BLOC + SIZE_BLOC / 2, y * SIZE_BLOC + SIZE_BLOC / 2, SIZE_BLOC / 2);
                     if (obstacle.collision(joueur)) {
 
                         return true;
@@ -212,13 +211,14 @@ public class Personnage extends Labyrinthe {
         return false;
     }
     public boolean isObstacleBomb(double posX,double posY,Labyrinthe laby,String direction) {
-        Box joueur = new Box(posX - (SIZE_PLAYER / 2), posY - (SIZE_PLAYER / 2), SIZE_PLAYER, SIZE_PLAYER);
+        Box joueur = new Box(posX - (SIZE_PLAYER / 2), posY - (SIZE_PLAYER/ 2), SIZE_PLAYER, SIZE_PLAYER);
         if (!listBomb.isEmpty()) {
             for (int bombe = 0; bombe < listBomb.size(); bombe++) {
 
                 if (listBomb.get(bombe) != null) {
                         if (!listBomb.get(bombe).isEscape()) {
                             Box bomb = new Box(listBomb.get(bombe).getPosBombBlocX() * SIZE_BLOC+ SIZE_BLOC/3, listBomb.get(bombe).getPosBombBlocY() * SIZE_BLOC+SIZE_BLOC/3, SIZE_BOMB, SIZE_BOMB);
+ 
                         if (bomb.collision(joueur)) {
                             if (canPushBomb) {
                                 listBomb.get(bombe).setDirection(direction);
@@ -254,14 +254,14 @@ public class Personnage extends Labyrinthe {
 
     public void move(Labyrinthe laby) {
         if (StdDraw.isKeyPressed(DOWN_COM)) {
-            if (isObstacle(posX, posY - 2, laby) || isObstacleBomb(posX, posY-SIZE_BLOC/2+5, laby,"down") ) {
+            if (isObstacle(posX, posY - 2, laby) || isObstacleBomb(posX, posY-(SIZE_BOMB-2), laby,"down")) {
                 this.posY -=0;
             } else {
                 this.posY -= vitesse;
             }
         }
         if (StdDraw.isKeyPressed(UP_COM)) {
-            if (isObstacle(posX, posY + 2, laby) || isObstacleBomb(posX, posY+SIZE_BLOC/2-5, laby, "up")){
+            if (isObstacle(posX, posY + 2, laby) || (isObstacleBomb(posX, posY+(SIZE_BOMB), laby, "up"))){
                 this.posY += 0;
             } else {
 
@@ -269,7 +269,7 @@ public class Personnage extends Labyrinthe {
             }
         }
         if (StdDraw.isKeyPressed(LEFT_COM)) {
-            if (isObstacle(posX - 2, posY, laby) || isObstacleBomb(posX - SIZE_BLOC/2+5 , posY, laby, "left")) {
+            if (isObstacle(posX - 2, posY, laby) || isObstacleBomb(posX -(SIZE_BOMB-2)  , posY, laby, "left")) {
                 this.posX += 0;
             } else {
 
@@ -278,7 +278,7 @@ public class Personnage extends Labyrinthe {
 
         }
         if (StdDraw.isKeyPressed(RIGHT_COM)) {
-            if (isObstacle(posX + 2, posY, laby) || isObstacleBomb(posX + SIZE_BLOC/2-5, posY, laby, "right")) {
+            if (isObstacle(posX + 2, posY, laby) || isObstacleBomb(posX + (SIZE_BOMB), posY, laby, "right")) {
                 this.posX += 0;
             } else {
 
