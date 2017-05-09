@@ -9,7 +9,7 @@ public class Perso {
 	private int vie=3;
 	private float vitesse=0.080f;
 	private Color couleur;
-	private float taille=0.3f;
+	private float taille=0.6f;
 	private int UP;
 	private int DOWN;
 	private int LEFT;
@@ -35,16 +35,16 @@ public class Perso {
 	public void Affichageperso(float x, float y){
 		
 		StdDraw.setPenColor(this.couleur);
-		StdDraw.filledCircle(x, y, taille);
+		StdDraw.filledCircle(x, y, taille/2);
 		
 	}
 	
 	public boolean DetectionCol (Map laby,float x,float y){
-		Contours contour =new Contours(x-0.15f,y-0.15f,taille,taille);
+		Contours contour =new Contours(x+(0.5f-taille +taille/2),y+(0.5f-taille+taille/2),taille,taille);
 		for(int i=0;i<21;i++){
 			for(int j=0;j<17;j++){
 				if(laby.getLaby()[j][i]==0 || laby.getLaby()[j][i]==1){
-					StdDraw.filledSquare(j+0.5f, i+0.5f, 0.5);
+					
 					Contours obstacle =new Contours(j+0.5f,i+0.5f,1f,1f);
 					if(contour.test(obstacle)){
 					
