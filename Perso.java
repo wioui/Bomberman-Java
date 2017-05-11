@@ -7,7 +7,7 @@ public class Perso {
 	private float x;
 	private float y;
 	private int vie=3;
-	private float vitesse=0.080f;
+	private float vitesse=0.060f;
 	private Color couleur;
 	private float taille=0.6f;
 	private int UP;
@@ -15,8 +15,21 @@ public class Perso {
 	private int LEFT;
 	private int RIGHT;
 	private int ACTION;
+	private Bombes bombe=new Bombes(getY(),getX(),2,3);
+	private Bonus bonus=new Bonus();
+	private int nbBomb=3;
 	
 	
+	public int getNbBomb() {
+		return nbBomb;
+	}
+
+
+	public void setNbBomb(int nbBomb) {
+		this.nbBomb = nbBomb;
+	}
+
+
 	public Perso(String name, float x, float y,Color couleur) {
 		super();
 		this.name = name;
@@ -58,9 +71,9 @@ public class Perso {
 		
 	}
 	
-	public void Deplacement(Map Laby){
+	public void Deplacement(Map laby){
 		if (StdDraw.isKeyPressed(UP)){
-			if(DetectionCol(Laby,x,y+0.1f)){
+			if(DetectionCol(laby,x,y+0.1f)){
 				this.y+=0;
 			}
 			else{
@@ -71,7 +84,7 @@ public class Perso {
 		}
 		
 		if(StdDraw.isKeyPressed(DOWN)){
-			if(DetectionCol(Laby,x,y-0.1f)){
+			if(DetectionCol(laby,x,y-0.1f)){
 				this.y+=0;
 			}
 			else{
@@ -82,7 +95,7 @@ public class Perso {
 		}
 		
 		if(StdDraw.isKeyPressed(LEFT)){
-			if(DetectionCol(Laby,x-0.1f,y)){
+			if(DetectionCol(laby,x-0.1f,y)){
 				this.x+=0;
 			}
 			else{
@@ -93,7 +106,7 @@ public class Perso {
 		}
 		
 		if(StdDraw.isKeyPressed(RIGHT)){
-			if(DetectionCol(Laby,x+0.1f,y)){
+			if(DetectionCol(laby,x+0.1f,y)){
 				this.x+=0;
 			}
 			else{
@@ -102,17 +115,93 @@ public class Perso {
 			}
 			
 		}
+		this.takeBonus(laby, getBlocy(), getBlocx());
 		
 	}
 	
-	private void PoserBomb(){
+	public void PoserBomb(Map laby){
 		
 		if(StdDraw.isKeyPressed(ACTION)){
+			Bombes bombe = new Bombes(this.x, this.y,1,3);
+			bombe.Poser(laby);
 			
-		}
-		
-		
+			bombe.explosion(laby, this);
+			
+			
+			
+					
+		}	
 	}
+	
+	public void takeBonus(Map laby, int blocx, int blocy){
+		
+		if(laby.getLaby()[blocx][blocy] == 10){
+			laby.setLaby(blocx,blocy,2);
+            if (this.bombe.getRange() < 10) {
+                this.bombe.setRange(this.bombe.getRange()- 1);
+            }
+        }
+		if(laby.getLaby()[blocx][blocy] == 11){
+			laby.setLaby(blocx,blocy,2);
+            if (this.bombe.getRange() > 1) {
+                this.bombe.setRange(this.bombe.getRange()- 1);
+            }
+        }
+		if(laby.getLaby()[blocx][blocy] == 12){
+			laby.setLaby(blocx,blocy,2);
+                this.bombe.setRange(10);
+            }
+		
+		if(laby.getLaby()[blocx][blocy] == 13){
+			laby.setLaby(blocx,blocy,2);
+            if (this.bombe.getRange() > 1) {
+                this.bombe.setRange(this.bombe.getRange()- 1);
+            }
+        }
+//		//if(laby.getLaby()[blocx][blocy] == 14){
+//			laby.setLaby(blocx,blocy,2);
+//            if (bombe.getRange() > 1) {
+//                bombe.setRange(bombe.getRange()- 1);
+//            }
+//        }
+		if(laby.getLaby()[blocx][blocy] == 15){
+			laby.setLaby(blocx,blocy,2);
+                this.setVie(this.getVie()+ 1);
+            }
+		if(laby.getLaby()[blocx][blocy] == 16){
+			laby.setLaby(blocx,blocy,2);
+			if(this.getVitesse()<0.130f){
+                this.setVitesse((float) (this.getVitesse()+ 0.02f));
+			}
+            }
+		if(laby.getLaby()[blocx][blocy] == 17){
+			laby.setLaby(blocx,blocy,2);
+			if(this.getVitesse()>0){
+                this.setVitesse((float) (this.getVitesse()- 0.02f));
+			}
+            }
+		if(laby.getLaby()[blocx][blocy] == 18){
+			laby.setLaby(blocx,blocy,2);
+			if(this.getNbBomb()<7){
+				this.setNbBomb((this.getNbBomb()+ 2));
+			}
+                
+            }
+		if(laby.getLaby()[blocx][blocy] == 19){
+			laby.setLaby(blocx,blocy,2);
+			if(this.getNbBomb()>2){
+				this.setNbBomb((this.getNbBomb()- 2));
+			}
+                
+            }
+		
+		
+		
+        }
+		
+			
+		
+	
 	
 	
 	public String getName() {
@@ -175,7 +264,34 @@ public class Perso {
 	public void setACTION(int aCTION) {
 		ACTION = aCTION;
 	}
+
+
+	public Bombes getBombe() {
+		return bombe;
+	}
+
+
+	public void setBombe(Bombes bombe) {
+		this.bombe = bombe;
+	}
+
+
+	public Bonus getBonus() {
+		return bonus;
+	}
+
+
+	public void setBonus(Bonus bonus) {
+		this.bonus = bonus;
+	}
 	
+	public int getBlocx() {
+		return (int) Math.floor(x);
+	}
+	
+	public int getBlocy() {
+		return (int) Math.floor(y);
+	}
 	
 	
 	
