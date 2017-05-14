@@ -22,13 +22,19 @@ public class Map {
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
 	
 	
-	public int[][] getLaby() {
-		return Laby;
-	}
+	 public int[][] getLaby() {
+	        int[][] newMap = new int[21][17];
+	        for (int x = 0; x < 21; x++) {
+	            for (int y = 0; y < 17; y++) {
+	                newMap[x][y] = Laby[y][x];
+	            }
+	        }
+	        return newMap;
+	    }
 
 
 	public  void setLaby(int x, int y, int set) {
-		this.Laby[x][y]=set;
+		this.Laby[y][x]=set;
 	}
 
 
@@ -50,11 +56,11 @@ public class Map {
 					StdDraw.setPenColor(StdDraw.GREEN);
 					StdDraw.filledSquare(i+0.5, j+0.5 ,0.5);
 				}
-				else if (Laby[j][i]==3){					
+				else if (Laby[j][i]==3) {
 					StdDraw.setPenColor(StdDraw.RED);
 					StdDraw.filledCircle(i+0.5, j+0.5 ,0.3);
-										
 				}
+				
 				else if(Laby[j][i]==10){
 					StdDraw.setPenColor(StdDraw.YELLOW);
 					StdDraw.filledSquare(i+0.5, j+0.5 ,0.5);
