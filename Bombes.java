@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.util.LinkedList;
+import java.util.List;
 
 import edu.princeton.cs.introcs.StdDraw;
 
@@ -40,70 +42,96 @@ public class Bombes {
 		boolean exploD=true;
 		boolean exploR=true;
 		boolean exploL=true;
+		boolean exploall=true;
+		
 
-		 if (this.blocx == joueur.getBlocx() && this.blocy == joueur.getBlocy()) {
-	            this.escapeActive = true;
-	        }
-	        else {
+		 while (((joueur.getBlocx()==this.getBlocx()+2) || (joueur.getBlocx()==this.getBlocx()-2)) && this.escapeActive) {
 	            this.escapeActive = false;
 	        }
-		
+		 while (((joueur.getBlocy()==this.getBlocy()+2) || (joueur.getBlocy()==this.getBlocy()-2)) && this.escapeActive) {
+	            this.escapeActive = false;
+	        }
+	        
+	        
 		
 		
 		
 		if (this.timeDrop+this.explosiontime < System.currentTimeMillis()/1000){
 		for (int i=1; i<=this.range;i++){
 			
-			if (laby.getLaby()[this.getBlocx()][this.getBlocy()] !=0 ) {
-				if(joueur.getBlocx()==this.getBlocx() && joueur.getBlocy()==this.getBlocy())
-                laby.setLaby(this.getBlocx(), this.getBlocy(), 2);
+			if (laby.getLaby()[this.getBlocx()][this.getBlocy()]==2 || laby.getLaby()[this.getBlocx()][this.getBlocy()]==5){
+				exploall=explosionOnPlayer(joueur,this.getBlocx() , this.getBlocy(), exploall);
+			}
+			if (laby.getLaby()[this.getBlocx()][this.getBlocy()] ==3 ) {
+				
+                laby.setLaby(this.getBlocx(), this.getBlocy(), 5);
+				
             }			
 			if(this.getBlocy()+i<17){
+				
 				if(laby.getLaby()[this.getBlocx()][this.getBlocy()+i]==0){
-					exploR=false;
+					exploU=false;
 				}
-				else if(laby.getLaby()[this.getBlocx()][this.getBlocy()+i]==1 && exploR==true){
-					laby.setLaby(this.getBlocx(), this.getBlocy()+i, 2);
-					exploR=false;
+				else if(laby.getLaby()[this.getBlocx()][this.getBlocy()+i]==1 && exploU){
+					laby.setLaby(this.getBlocx(), this.getBlocy()+i, 5);
+					
+					exploU=false;
 					joueur.getBonus().activeBonus(laby, getBlocx(),getBlocy()+i);
 				}
-				else if(laby.getLaby()[this.getBlocx()][this.getBlocy()+i]==2 && exploR==true){
-					explosionOnPlayer(joueur,this.getBlocx() , this.getBlocy(), exploR);
+				else if(laby.getLaby()[this.getBlocx()][this.getBlocy()+i]==3){
+					
 				}
+
+				explosionOnPlayer(joueur,this.getBlocx() , this.getBlocy()+i, exploU);
+				
 			}
-			if(this.getBlocx()+i<17){
+			if(this.getBlocx()+i<21){
+				
 				if(laby.getLaby()[this.getBlocx()+i][this.getBlocy()]==0){
-					exploU=false;
+					exploR=false;
 				}
-				else if(laby.getLaby()[this.getBlocx()+i][this.getBlocy()]==1 && exploU==true){
-					laby.setLaby(this.getBlocx()+i, this.getBlocy(), 2);
-					exploU=false;
+				else if(laby.getLaby()[this.getBlocx()+i][this.getBlocy()]==1 && exploR){
+					laby.setLaby(this.getBlocx()+i, this.getBlocy(), 5);
+					
+					exploR=false;
 					joueur.getBonus().activeBonus(laby, getBlocx()+i,getBlocy());
 				}
+				explosionOnPlayer(joueur,this.getBlocx()+i , this.getBlocy(), exploR);
+				
 			}
 			if(this.getBlocy()-i>0){
+				
 				if(laby.getLaby()[this.getBlocx()][this.getBlocy()-i]==0){
-					exploL=false;
+					exploD=false;
 				}
-				if(laby.getLaby()[this.getBlocx()][this.getBlocy()-i]==1 && exploL==true){
-					laby.setLaby(this.getBlocx(), this.getBlocy()-i, 2);
-					exploL=false;
+				else if(laby.getLaby()[this.getBlocx()][this.getBlocy()-i]==1 && exploD){
+					laby.setLaby(this.getBlocx(), this.getBlocy()-i, 5);
+					exploD=false;
 					joueur.getBonus().activeBonus(laby, getBlocx(),getBlocy()-i);
 			}
+
+				explosionOnPlayer(joueur,this.getBlocx() , this.getBlocy()-i, exploD);
+				
 			}
 			
 			if(this.getBlocx()-i>0){
+				
 				if(laby.getLaby()[this.getBlocx()-i][this.getBlocy()]==0){
-					exploD=false;
+					exploL=false;
 				}
-			if(laby.getLaby()[this.getBlocx()-i][this.getBlocy()]==1 && exploD==true){
-				laby.setLaby(this.getBlocx()-i, this.getBlocy(), 2);
-				exploD=false;
+			if(laby.getLaby()[this.getBlocx()-i][this.getBlocy()]==1 && exploL){
+				laby.setLaby(this.getBlocx()-i, this.getBlocy(), 5);
+				
+				exploL=false;
 				joueur.getBonus().activeBonus(laby, getBlocx()-i,getBlocy());
 			}	
+			explosionOnPlayer(joueur,this.getBlocx()-i , this.getBlocy(), exploL);
+			
 			}
 			
-			
+			Animation explo=new Animation((long) ((System.currentTimeMillis())/1000),1,"j");
+			if(explo.getDelay()+explo.getStartTime()< System.currentTimeMillis()/1000){
+			explo.animationExplo(laby);}			
 			
 			for(int j=0;j<joueur.listBomb.size();j++){
 				if(joueur.listBomb.get(j)!=null){
@@ -112,6 +140,7 @@ public class Bombes {
 				}
 					
 			}
+			
 	}
 		
 		
@@ -127,14 +156,29 @@ public class Bombes {
 //			}}
 //		System.out.println("fin");
 	}
-	}
+		
+		}
+		
 
-	public void explosionOnPlayer(Perso joueur, int blocx, int blocy, boolean explo){
-		if(joueur.getBlocx()==blocx && joueur.getBlocy()==blocy){
-			explo=false;
-			joueur.setVie(joueur.getVie()-1);
-			joueur.setX(1.5f);
-			joueur.setY(2.5f);
+	private boolean explosionOnPlayer(Perso joueur, int blocx, int blocy, boolean explo){
+		for(int i=0;i< Main.listPerso.size();i++){
+			if(Main.listPerso.get(i).getBlocx()==blocx && Main.listPerso.get(i).getBlocy()==blocy &&explo){
+				System.out.println("touché");
+				explo=false;
+				Main.listPerso.get(i).setVie(Main.listPerso.get(i).getVie()-1);
+				Main.listPerso.get(i).setX(Main.listPerso.get(i).getInitx());
+				Main.listPerso.get(i).setY(Main.listPerso.get(i).getInity());
+
+			}
+		}
+		return explo;
+		
+	}
+	
+	private void explosionOnBomb(Map laby,int blocx,int blocy, boolean explo){
+		if(laby.getLaby()[blocx][blocy]==3){
+			laby.setLaby(blocx, blocy,2);
+			laby.setLaby(blocx, blocy,2);
 		}
 	}
 

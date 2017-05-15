@@ -6,11 +6,13 @@ import edu.princeton.cs.introcs.StdDraw;
 public class Perso {
 	
 	protected String name;
+	private float initx;
+	private float inity;
 	private float x;
 	private float y;
 	private int vie=3;
-	private float vitesse=0.10f;
-	private Color couleur;
+	private float vitesse=0.03f;
+	private String couleur;
 	private float taille=0.6f;
 	private Bombes bombe;
 	protected List<Bombes> listBomb;
@@ -23,22 +25,16 @@ public class Perso {
 	
 	
 	
-	public int getNbBomb() {
-		return nbBomb;
-	}
+	
 
-
-	public void setNbBomb(int nbBomb) {
-		this.nbBomb = nbBomb;
-	}
-
-
-	public Perso(String name, float x, float y,Color couleur, GameControl conf) {
+	public Perso(String name, float initx, float inity,String couleur, GameControl conf) {
 		super();
 		this.name = name;
 		
-		this.x = x;
-		this.y = y;
+		this.initx=initx;
+		this.inity=inity;
+		this.x = initx;
+		this.y = inity;
 		this.couleur = couleur;
 		this.listBomb= new LinkedList<>();
 		this.nbBomb=3;
@@ -48,9 +44,130 @@ public class Perso {
 	
 	
 	public void affichageperso(float x, float y){
+		double beforex=(int)this.getX();
+		double beforey=(int)this.getY();
+//		StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB11.PNG");
+//		if (StdDraw.isKeyPressed(this.touches.getRIGHT())){
+//		if (this.getX() <= beforex + 0.125) {
+//			StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB1.PNG");
+//        }
+//        else if (beforex + 0.125 < this.getX()  && this.getX() <= beforex + 0.25 ) {
+//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB2.PNG");
+//        }
+//        else if (beforex + 0.25 < this.getX()  && this.getX() <= beforex + 0.375)  {
+//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB3.PNG");
+//        }
+//        else if (beforex + 0.375 < this.getX()  && this.getX() <= beforex + 0.5)  {
+//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB4.PNG");
+//        }
+//        else if (beforex + 0.5 < this.getX()  && this.getX() <= beforex + 0.625)  {
+//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB5.PNG");
+//        }
+//        else if (beforex + 0.625 < this.getX()  && this.getX() <= beforex + 0.75)  {
+//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB6.PNG");
+//        }
+//        else if (beforex + 0.75 < this.getX()  && this.getX() <= beforex + 0.875)  {
+//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB7.PNG");
+//        }
+//        else {
+//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB8.PNG");
+//        }
+//		
+//		}
+//		if (StdDraw.isKeyPressed(this.touches.getLEFT())){
+//		if (this.getX() <= beforex + 0.125) {
+//			StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB10.PNG");
+//        }
+//        else if (beforex + 0.125 < this.getX()  && this.getX() <= beforex + 0.25 ) {
+//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB20.PNG");
+//        }
+//        else if (beforex + 0.25 < this.getX()  && this.getX() <= beforex + 0.375)  {
+//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB30.PNG");
+//        }
+//        else if (beforex + 0.375 < this.getX()  && this.getX() <= beforex + 0.5)  {
+//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB40.PNG");
+//        }
+//        else if (beforex + 0.5 < this.getX()  && this.getX() <= beforex + 0.625)  {
+//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB50.PNG");
+//        }
+//        else if (beforex + 0.625 < this.getX()  && this.getX() <= beforex + 0.75)  {
+//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB60.PNG");
+//        }
+//        else if (beforex + 0.75 < this.getX()  && this.getX() <= beforex + 0.875)  {
+//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB70.PNG");
+//        }
+//        else {
+//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB80.PNG");
+//        }
+//		
+//		}
+//		if (StdDraw.isKeyPressed(this.touches.getUP())){
+//			if (this.getY() <= beforey + 0.125) {
+//				StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB110.PNG");
+//	        }
+//	        else if (beforey + 0.125 < this.getY()  && this.getY() <= beforey + 0.25 ) {
+//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB210.PNG");
+//	        }
+//	        else if (beforey + 0.25 < this.getY()  && this.getY() <= beforey + 0.375)  {
+//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB310.PNG");
+//	        }
+//	        else if (beforey + 0.375 < this.getY()  && this.getY() <= beforey + 0.5)  {
+//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB410.PNG");
+//	        }
+//	        else if (beforey + 0.5 < this.getY()  && this.getY() <= beforey + 0.625)  {
+//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB510.PNG");
+//	        }
+//	        else if (beforey + 0.625 < this.getY()  && this.getY() <= beforey + 0.75)  {
+//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB610.PNG");
+//	        }
+//	        else if (beforey + 0.75 < this.getY()  && this.getY() <= beforey + 0.875)  {
+//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB710.PNG");
+//	        }
+//	        else {
+//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB810.PNG");
+//	        }
+//			
+//			}
+//			if (StdDraw.isKeyPressed(this.touches.getDOWN())){
+//			if (this.getY() <= beforey + 0.125) {
+//				StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB11.PNG");
+//	        }
+//	        else if (beforey + 0.125 < this.getY()  && this.getY() <= beforey + 0.25 ) {
+//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB21.PNG");
+//	        }
+//	        else if (beforey + 0.25 < this.getY()  && this.getY() <= beforey + 0.375)  {
+//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB31.PNG");
+//	        }
+//	        else if (beforey + 0.375 < this.getY()  && this.getY() <= beforey + 0.5)  {
+//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB41.PNG");
+//	        }
+//	        else if (beforey + 0.5 < this.getY()  && this.getY() <= beforey + 0.625)  {
+//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB51.PNG");
+//	        }
+//	        else if (beforey + 0.625 < this.getY()  && this.getY() <= beforey + 0.75)  {
+//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB61.PNG");
+//	        }
+//	        else if (beforey + 0.75 < this.getY()  && this.getY() <= beforey + 0.875)  {
+//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB71.PNG");
+//	        }
+//	        else {
+//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/blackB81.PNG");
+//	        }
+//			}
+        	
+		if(this.couleur=="white"){
+			StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/RedBomber.PNG");
+		}
+		if(this.couleur=="black"){
+			StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/RedBomber.PNG");
+		}
+		if(this.couleur=="green"){
+			StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/RedBomber.PNG");
+		}
+	if(this.couleur=="blue"){
+			StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/RedBomber.PNG");
+		}
 		
-		StdDraw.setPenColor(this.couleur);
-		StdDraw.filledCircle(x, y, taille/2);
 		
 	}
 	
@@ -148,7 +265,7 @@ public class Perso {
 	
 	
 	private int nbBombList(){
-		int compteur=0;
+		int compteur=1;
 		for(int i=0;i<this.listBomb.size();i++){
 			if(this.listBomb.get(i)!=null){
 				compteur++;
@@ -164,10 +281,10 @@ public class Perso {
 		if(StdDraw.isKeyPressed(this.touches.getACTION())){
 			if (laby.getLaby()[this.getBlocx()][this.getBlocy()]!=3){
 				int compteur=this.nbBombList();
-				if(compteur<this.getNbBomb()){
+				
+				if(compteur<=this.getNbBomb()){
 	            		Bombes bombe = new Bombes(this.x, this.y,time,3);
 	                    this.listBomb.add(bombe);
-	                    
 	                   
 	                    laby.setLaby(this.getBlocx(),this.getBlocy(),3);
 	                    
@@ -177,7 +294,8 @@ public class Perso {
 	                }
 				}
 		for(int i=0;i<listBomb.size();i++){
-			if (listBomb.get(i) != null){
+			System.out.println(this.nbBombList());
+			if (this.listBomb.get(i) != null){
 			listBomb.get(i).explosion(laby, this);
 			}
 			}
@@ -224,13 +342,13 @@ public class Perso {
 	if(laby.getLaby()[blocx][blocy] == 16){
 		laby.setLaby(blocx,blocy,2);
 		if(this.getVitesse()<0.130f){
-                this.setVitesse((float) (this.getVitesse()+ 0.02f));
+                this.setVitesse((float) (this.getVitesse()+ 0.005f));
 			}
             }
 	if(laby.getLaby()[blocx][blocy] == 17){
 			laby.setLaby(blocx,blocy,2);
 			if(this.getVitesse()>0){
-                this.setVitesse((float) (this.getVitesse()- 0.02f));
+                this.setVitesse((float) (this.getVitesse()- 0.005f));
 			}
            }
 		if(laby.getLaby()[blocx][blocy] == 18){
@@ -254,9 +372,78 @@ public class Perso {
 	
 			
 		
+	public int getNbBomb() {
+		return nbBomb;
+	}
+
+
+	public void setNbBomb(int nbBomb) {
+		this.nbBomb = nbBomb;
+	}
+
 	
 	
 	
+	public float getInitx() {
+		return initx;
+	}
+
+
+	public void setInitx(float initx) {
+		this.initx = initx;
+	}
+
+
+	public float getInity() {
+		return inity;
+	}
+
+
+	public void setInity(float inity) {
+		this.inity = inity;
+	}
+
+
+	public Color getCouleur() {
+		return couleur;
+	}
+
+
+	public void setCouleur(Color couleur) {
+		this.couleur = couleur;
+	}
+
+
+	public float getTaille() {
+		return taille;
+	}
+
+
+	public void setTaille(float taille) {
+		this.taille = taille;
+	}
+
+
+	public List<Bombes> getListBomb() {
+		return listBomb;
+	}
+
+
+	public void setListBomb(List<Bombes> listBomb) {
+		this.listBomb = listBomb;
+	}
+
+
+	public GameControl getTouches() {
+		return touches;
+	}
+
+
+	public void setTouches(GameControl touches) {
+		this.touches = touches;
+	}
+
+
 	public String getName() {
 		return name;
 	}
