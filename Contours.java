@@ -26,6 +26,28 @@ public class Contours {
 	            return true;
 	    }
 	
+	public boolean test(int curseur_x,int curseur_y,Contours box)
+	{
+	   if (curseur_x >= box.x 
+	    && curseur_x < box.x + box.w
+	    && curseur_y >= box.y 
+	    && curseur_y < box.y + box.z)
+	       return true;
+	   else
+	       return false;
+	}
+	
+	public boolean test(double curseur_x,double curseur_y,Contours box)
+	{
+	   if (curseur_x >= box.x 
+	    && curseur_x < box.x + box.w
+	    && curseur_y >= box.y 
+	    && curseur_y < box.y + box.z)
+	       return true;
+	   else
+	       return false;
+	}
+	
 
 	public float getX() {
 		return x;

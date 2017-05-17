@@ -18,6 +18,7 @@ public class Bombes {
 	private int explosiontime;
 	private float range;
 	private boolean escapeActive;
+	private int id;
 	
 	
 	
@@ -135,8 +136,11 @@ public class Bombes {
 			
 			for(int j=0;j<joueur.listBomb.size();j++){
 				if(joueur.listBomb.get(j)!=null){
-					joueur.listBomb.set(j,null);
-					break;
+					if(joueur.listBomb.get(j).getId()==this.getId()){
+						joueur.listBomb.set(j,null);
+						break;
+					}
+					
 				}
 					
 			}
@@ -159,6 +163,10 @@ public class Bombes {
 		
 		}
 		
+
+	
+
+
 
 	private boolean explosionOnPlayer(Perso joueur, int blocx, int blocy, boolean explo){
 		for(int i=0;i< Main.listPerso.size();i++){
@@ -241,7 +249,15 @@ public class Bombes {
 
 
 
+	public int getId() {
+		return id;
+	}
 
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 
 

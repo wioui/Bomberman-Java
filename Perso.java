@@ -11,7 +11,7 @@ public class Perso {
 	private float x;
 	private float y;
 	private int vie=3;
-	private float vitesse=0.03f;
+	private float vitesse=0.04f;
 	private String couleur;
 	private float taille=0.6f;
 	private Bombes bombe;
@@ -155,7 +155,7 @@ public class Perso {
 //	        }
 //			}
         	
-		if(this.couleur=="white"){
+		if(this.couleur=="red"){
 			StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/RedBomber.PNG");
 		}
 		if(this.couleur=="black"){
@@ -284,6 +284,8 @@ public class Perso {
 				
 				if(compteur<=this.getNbBomb()){
 	            		Bombes bombe = new Bombes(this.x, this.y,time,3);
+	            		bombe.setId((listBomb.size()+1));
+	            		System.out.println("id"+bombe.getId());
 	                    this.listBomb.add(bombe);
 	                   
 	                    laby.setLaby(this.getBlocx(),this.getBlocy(),3);
@@ -294,7 +296,7 @@ public class Perso {
 	                }
 				}
 		for(int i=0;i<listBomb.size();i++){
-			System.out.println(this.nbBombList());
+
 			if (this.listBomb.get(i) != null){
 			listBomb.get(i).explosion(laby, this);
 			}
