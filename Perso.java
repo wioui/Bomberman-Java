@@ -231,6 +231,7 @@ public class Perso {
 				this.y+=0;
 			}
 			else{
+				System.out.println("down");
 				
 				this.y-=vitesse;
 			}
@@ -242,7 +243,7 @@ public class Perso {
 				this.x+=0;
 			}
 			else{
-				
+				System.out.println("left");
 				this.x-=vitesse;
 			}
 			
@@ -406,14 +407,7 @@ public class Perso {
 	}
 
 
-	public Color getCouleur() {
-		return couleur;
-	}
 
-
-	public void setCouleur(Color couleur) {
-		this.couleur = couleur;
-	}
 
 
 	public float getTaille() {
