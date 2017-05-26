@@ -26,7 +26,8 @@ public class Main {
 		StdDraw.setCanvasSize(630,660);
 		StdDraw.setXscale(0, 21);
         StdDraw.setYscale(-5, 17);
-        StdDraw.picture(10.5,8.5, "///C:/Users/wioui/Documents/Bomberman/src/Image/bomberman1.png");
+        StdDraw.picture(10.5,8.5, "Image/bomberman1.png");
+        
        
         
 		while(!StdDraw.isKeyPressed(81)){
@@ -37,7 +38,7 @@ public class Main {
 			 String choixPerso2=null;
 			 
 			StdDraw.clear();
-			StdDraw.picture(10.5,8.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/bomberman2.png");
+			StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
 			while (choixPerso1==null || choixPerso2==null){
 				
 				
@@ -45,10 +46,10 @@ public class Main {
 				
 				if((5<StdDraw.mouseY()&& 7>StdDraw.mouseY()) && (7.2<StdDraw.mouseX()&& 8.8>StdDraw.mouseX())  && StdDraw.mousePressed()){
 					if(choixPerso1=="white"){
-						StdDraw.picture(9, 7.2, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/Bomb.PNG");
+						StdDraw.picture(9, 7.2, "Image/Bomb.PNG");
 					}
 					else{
-						StdDraw.picture(10.5,8.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/bomberman2.png");
+						StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
 					}
 					 
 					choixPerso1="white";
@@ -56,30 +57,30 @@ public class Main {
 				}
 				if((5.5<StdDraw.mouseY()&& 7.5>StdDraw.mouseY()) && (4.5<StdDraw.mouseX()&& 6.1>StdDraw.mouseX())  && StdDraw.mousePressed()){
 					if(choixPerso1=="blue"){
-						StdDraw.picture(6.3, 7.2, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/Bomb.PNG");
+						StdDraw.picture(6.3, 7.2, "Image/Bomb.PNG");
 					}
 					else{
-						StdDraw.picture(10.5,8.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/bomberman2.png");
+						StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
 					}
 					 
 					choixPerso1="blue";
 				}
 				if ((9<StdDraw.mouseY()&& 11.5>StdDraw.mouseY()) && (4.2<StdDraw.mouseX()&& 6.2>StdDraw.mouseX())  && StdDraw.mousePressed()){
 					if(choixPerso1=="green"){
-						StdDraw.picture(6.2, 11.5 , "file:///C:/Users/wioui/Documents/Bomberman/src/Image/Bomb.PNG");
+						StdDraw.picture(6.2, 11.5 , "Image/Bomb.PNG");
 					}
 					else{
-						StdDraw.picture(10.5,8.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/bomberman2.png");
+						StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
 					}
 					 
 					choixPerso1="green";
 				}
 				if((9<StdDraw.mouseY()&& 11.5>StdDraw.mouseY()) && (7.2<StdDraw.mouseX()&& 8.8>StdDraw.mouseX())  && StdDraw.mousePressed()){
 					if(choixPerso1=="black"){
-						StdDraw.picture(8.8, 11.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/Bomb.PNG");
+						StdDraw.picture(8.8, 11.5, "Image/Bomb.PNG");
 					}
 					else{
-						StdDraw.picture(10.5,8.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/bomberman2.png");
+						StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
 					}
 					 
 					choixPerso1="black";
@@ -87,40 +88,40 @@ public class Main {
 				
 				if((5.4<StdDraw.mouseY()&& 7.7>StdDraw.mouseY()) && (17.5<StdDraw.mouseX()&& 19>StdDraw.mouseX())  && StdDraw.mousePressed()){
 					if(choixPerso2=="white"){
-						StdDraw.picture(19, 7.7, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/Bomb.PNG");
+						StdDraw.picture(19, 7.7, "Image/Bomb.PNG");
 					}
 					else{
-						StdDraw.picture(10.5,8.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/bomberman2.png");
+						StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
 					}
 					 
 					choixPerso2="white";
 				}
 				if((5.5<StdDraw.mouseY()&& 7.5>StdDraw.mouseY()) && (14.6<StdDraw.mouseX()&& 16.2>StdDraw.mouseX())  && StdDraw.mousePressed()){
 					if(choixPerso2=="blue"){
-						StdDraw.picture(16.2, 7.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/Bomb.PNG");
+						StdDraw.picture(16.2, 7.5, "Image/Bomb.PNG");
 					}
 					else{
-						StdDraw.picture(10.5,8.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/bomberman2.png");
+						StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
 					}
 					 
 					choixPerso2="blue";
 				}
 				if ((9<StdDraw.mouseY()&& 11.5>StdDraw.mouseY()) && (14.7<StdDraw.mouseX()&& 16.2>StdDraw.mouseX())  && StdDraw.mousePressed()){
 					if(choixPerso2=="green"){
-						StdDraw.picture(16.2, 11.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/Bomb.PNG");
+						StdDraw.picture(16.2, 11.5, "Image/Bomb.PNG");
 					}
 					else{
-						StdDraw.picture(10.5,8.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/bomberman2.png");
+						StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
 					}
 					 
 					choixPerso2="green";
 				}
 				if((9<StdDraw.mouseY()&& 11.5>StdDraw.mouseY()) && (17.5<StdDraw.mouseX()&& 19>StdDraw.mouseX())  && StdDraw.mousePressed()){
 					if(choixPerso2=="black"){
-						StdDraw.picture(19, 11.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/Bomb.PNG");
+						StdDraw.picture(19, 11.5, "Image/Bomb.PNG");
 					}
 					else{
-						StdDraw.picture(10.5,8.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/bomberman2.png");
+						StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
 					}
 					 
 					choixPerso2="black";
@@ -144,7 +145,7 @@ public class Main {
 			listPerso.add(J1);
 			listPerso.add(J2);
 			
-			
+			StdDraw.enableDoubleBuffering();
 			
 			while (!J1.isDie() && !J2.isDie()) {
 				
@@ -157,6 +158,14 @@ public class Main {
 			J2.affichageperso(J2.getX(), J2.getY());
 			J2.Deplacement(laby);
 			J2.poserBomb(laby,System.currentTimeMillis()/1000);
+			
+			if (!listAnimationBomb.isEmpty()) {
+                for (int animationBomb = 0; animationBomb < listAnimationBomb.size(); animationBomb++) {
+                    if (listAnimationBomb.get(animationBomb) != null) {
+                        listAnimationBomb.get(animationBomb).startAnimationBomb();
+                    }
+                }
+            }
 			J1.die();
 			J2.die();
 			statPlayer1.display("J1");

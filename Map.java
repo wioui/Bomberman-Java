@@ -81,21 +81,21 @@ public class Map {
 			for(int j=0;j<17;j++){
 				if(laby[j][i]==0){
 					StdDraw.setPenColor(StdDraw.BLACK);
-					StdDraw.picture(i+0.5, j+0.5 ,"///C:/Users/wioui/Documents/Bomberman/src/Image/MetalWall.PNG");
+					StdDraw.picture(i+0.5, j+0.5 ,"Image/MetalWall.PNG");
 				}
 				else if(laby[j][i]==1){
 					StdDraw.setPenColor(StdDraw.ORANGE);
-					StdDraw.picture(i+0.5, j+0.5 ,"///C:/Users/wioui/Documents/Bomberman/src/Image/Bricks.jpg");
+					StdDraw.picture(i+0.5, j+0.5 ,"Image/Bricks.jpg");
 				}
 				
 				else if (laby[j][i]==2 || laby[j][i]==3) {
 					StdDraw.setPenColor(StdDraw.GREEN);
-					StdDraw.picture(i+0.5, j+0.5 ,"///C:/Users/wioui/Documents/Bomberman/src/Image/Floor.PNG");
+					StdDraw.picture(i+0.5, j+0.5 ,"Image/Floor.PNG");
 				}
 				
 				else if (laby[j][i]==5) {
 					StdDraw.setPenColor(StdDraw.GREEN);
-					StdDraw.picture(i+0.5, j+0.5 ,"///C:/Users/wioui/Documents/Bomberman/src/Image/Floor.PNG");
+					StdDraw.picture(i+0.5, j+0.5 ,"Image/Floor.PNG");
 				}
 				
 				else if(laby[j][i]==10){

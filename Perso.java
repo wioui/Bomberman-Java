@@ -42,7 +42,7 @@ public class Perso {
 		this.nbBomb=3;
 		this.bombe=new Bombes(x, y, System.currentTimeMillis(), 3);
 		this.touches=conf;
-		this.canPushBomb=false;
+		this.canPushBomb=true;
 	}
 	
 	
@@ -159,16 +159,16 @@ public class Perso {
 //			}
         	
 		if(this.couleur=="white"){
-			StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+".PNG");
+			StdDraw.picture(x, y, "Image/"+this.couleur+".PNG");
 		}
 		if(this.couleur=="black"){
-			StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+".PNG");
+			StdDraw.picture(x, y, "Image/"+this.couleur+".PNG");
 		}
 		if(this.couleur=="green"){
-			StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+".PNG");
+			StdDraw.picture(x, y, "Image/"+this.couleur+".PNG");
 		}
 		if(this.couleur=="blue"){
-			StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+".PNG");
+			StdDraw.picture(x, y, "Image/"+this.couleur+".PNG");
 		}
 		
 		
@@ -293,8 +293,10 @@ public class Perso {
 				if(compteur<=this.getNbBomb()){
 					
 	            		Bombes bombe = new Bombes((int)this.x+0.5f, (int)this.y+0.5f,time,3);
-	            		bombe.setId((listBomb.size()+1));
+	            		
 	                    this.listBomb.add(bombe);
+	                    bombe.setId((listBomb.size()-1));
+	                    
 	                    bombe.putBomb(laby);
 	                    
 	                  

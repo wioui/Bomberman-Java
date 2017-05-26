@@ -21,6 +21,7 @@ public class Bombes {
 	private int id;
 	public  List<Integer[]> listCoordExplosion = new LinkedList<>();
 	int direction;
+	 private Integer middleCoord[] = new Integer[2];
 	
 	
 	
@@ -47,7 +48,7 @@ public class Bombes {
 		boolean exploL=true;
 		boolean exploall=true;
 		
-		StdDraw.picture(this.bombx, this.bomby, "///C:/Users/wioui/Documents/Bomberman/src/Image/Bomb.PNG");
+		StdDraw.picture(this.bombx, this.bomby, "Image/Bomb.PNG");
 		
 		 if(joueur.canPushBomb) {
 	            bonusPushBomb(joueur,laby);
@@ -153,8 +154,9 @@ public class Bombes {
 			
 			}
 			
-//			Animation bombeAnimation = new Animation(this, this.id);
-//            Main.listAnimationBomb.add(this.id,bombeAnimation);			
+			Animation bombeAnimation = new Animation(this, this.id);
+		
+            Main.listAnimationBomb.add(this.id, bombeAnimation);		
 			
 			for(int j=0;j<joueur.listBomb.size();j++){
 				if(joueur.listBomb.get(j)!=null){
@@ -309,6 +311,11 @@ public class Bombes {
         }
     }
 
+	  public Integer[] getMiddleCoord() {
+	        middleCoord[0] = this.getBlocx();
+	        middleCoord[1] = this.getBlocy();
+	        return middleCoord ;
+	    }
 
 	public boolean isEscapeActive() {
 		return escapeActive;
