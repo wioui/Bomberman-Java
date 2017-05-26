@@ -32,9 +32,9 @@ public class Contours {
 	    && curseur_x < box.x + box.w
 	    && curseur_y >= box.y 
 	    && curseur_y < box.y + box.z)
-	       return true;
-	   else
 	       return false;
+	   else
+	       return true;
 	}
 	
 	public boolean test(double curseur_x,double curseur_y,Contours box)
@@ -43,9 +43,9 @@ public class Contours {
 	    && curseur_x < box.x + box.w
 	    && curseur_y >= box.y 
 	    && curseur_y < box.y + box.z)
-	       return true;
-	   else
 	       return false;
+	   else
+	       return true;
 	}
 	
 

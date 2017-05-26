@@ -88,16 +88,11 @@ public class Map {
 					StdDraw.picture(i+0.5, j+0.5 ,"///C:/Users/wioui/Documents/Bomberman/src/Image/Bricks.jpg");
 				}
 				
-				else if (laby[j][i]==2) {
+				else if (laby[j][i]==2 || laby[j][i]==3) {
 					StdDraw.setPenColor(StdDraw.GREEN);
 					StdDraw.picture(i+0.5, j+0.5 ,"///C:/Users/wioui/Documents/Bomberman/src/Image/Floor.PNG");
 				}
-				else if (laby[j][i]==3) {
-					StdDraw.setPenColor(StdDraw.RED);
-					StdDraw.picture(i+0.5, j+0.5 ,"///C:/Users/wioui/Documents/Bomberman/src/Image/Floor.PNG");
-					StdDraw.picture(i+0.5, j+0.5 ,"///C:/Users/wioui/Documents/Bomberman/src/Image/Bomb.PNG");
-								
-				}
+				
 				else if (laby[j][i]==5) {
 					StdDraw.setPenColor(StdDraw.GREEN);
 					StdDraw.picture(i+0.5, j+0.5 ,"///C:/Users/wioui/Documents/Bomberman/src/Image/Floor.PNG");
@@ -105,39 +100,38 @@ public class Map {
 				
 				else if(laby[j][i]==10){
 					StdDraw.setPenColor(StdDraw.YELLOW);
-					StdDraw.filledSquare(i+0.5, j+0.5 ,0.5);
+					StdDraw.picture(i+0.5, j+0.5, "bonus/flamme-jaune.png");
 				}
 				else if(laby[j][i]==11){
 					StdDraw.setPenColor(StdDraw.CYAN);
-					StdDraw.filledSquare(i+0.5, j+0.5 ,0.5);
+					StdDraw.picture(i+0.5, j+0.5, "bonus/flamme-bleu.png");
 				}
 				else if(laby[j][i]==12){
 					StdDraw.setPenColor(StdDraw.MAGENTA);
-					StdDraw.filledSquare(i+0.5, j+0.5 ,0.5);
+					StdDraw.picture(i+0.5, j+0.5, "bonus/bombe10.png");
 				}
 				else if(laby[j][i]==13){
 					StdDraw.setPenColor(StdDraw.GRAY);
-					StdDraw.filledSquare(i+0.5, j+0.5 ,0.5);
+					StdDraw.picture(i+0.5, j+0.5, "bonus/vie.png");
 				}
 				else if(laby[j][i]==14){
 					StdDraw.setPenColor(StdDraw.PINK);
-					StdDraw.filledSquare(i+0.5, j+0.5 ,0.5);
+					StdDraw.picture(i+0.5, j+0.5, "bonus/speed-up.png");
 				}
 				else if(laby[j][i]==15){
 					StdDraw.setPenColor(StdDraw.WHITE);
-					StdDraw.filledSquare(i+0.5, j+0.5 ,0.5);
+					StdDraw.picture(i+0.5, j+0.5, "bonus/speed-down.png");
 				}
 				else if(laby[j][i]==16){
 					StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
-					StdDraw.filledSquare(i+0.5, j+0.5 ,0.5);
+					StdDraw.picture(i+0.5, j+0.5, "bonus/bombe-plus.png");
 				}
 				else if(laby[j][i]==17){
 					StdDraw.setPenColor(StdDraw.BOOK_RED);
-					StdDraw.filledSquare(i+0.5, j+0.5 ,0.5);
+					StdDraw.picture(i+0.5, j+0.5, "bonus/bombe-moins.png");
 				}
 				else if(laby[j][i]==18){
-					StdDraw.setPenColor(StdDraw.BOOK_LIGHT_BLUE);
-					StdDraw.filledSquare(i+0.5, j+0.5 ,0.5);
+					StdDraw.picture(i+0.5, j+0.5, "bonus/football.png");
 				}
 				
 				

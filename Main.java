@@ -18,103 +18,138 @@ public class Main {
 	
 	 public static LinkedList<Perso> listPerso = new LinkedList<>();
 	 static Map laby=new Map();
+	 static LinkedList<Animation> listAnimationBomb = new LinkedList<>();
 
 
 	public static void main(String[] args) {
 		
-		Scanner sc=new Scanner(System.in);
-		StdDraw.setCanvasSize(630,510);
+		StdDraw.setCanvasSize(630,660);
 		StdDraw.setXscale(0, 21);
-        StdDraw.setYscale(0, 17);
-//        StdDraw.picture(10.5,8.5, "///C:/Users/wioui/Documents/Bomberman/src/Image/bomberman1.png");
-//       
-//        
-//		while(!StdDraw.isKeyPressed(81)){
-//			
-//		if(StdDraw.isKeyPressed(32)){
-//			 
-//			 String choixPerso1=null;
-//			 String choixPerso2=null;
-//			 String namePerso1=null;
-//			 String namePerso2=null;
-//			 StdDraw.clear();
-//			 StdDraw.picture(10.5,8.5, "///C:/Users/wioui/Documents/Bomberman/src/Image/testname.png");
-//			while(namePerso1==null || namePerso2==null){
-//				
-//				Contours name1=new Contours(2.6f,10.4f,3,3);
-//				StdDraw.filledSquare(3.1f,10.9f,3);
-//				Contours name2=new Contours(12.5f,10.7f,3,3);
-//				StdDraw.filledSquare(12.5f,10.9f,3);
-//				
-//				if(name1.test(StdDraw.mouseX(),StdDraw.mouseY(),name1) && StdDraw.mousePressed()){
-//					System.out.println("ok");
-//					namePerso1=sc.nextLine();
-//					StdDraw.text(10.5, 7.5, namePerso1);
-//					
-//				}
-//
-//				if(name2.test(StdDraw.mouseX(),StdDraw.mouseY(),name2) && StdDraw.mousePressed()){
-//					System.out.println("ok");
-//					namePerso2=sc.nextLine();
-//					StdDraw.text(10.5, 7.5, namePerso2);
-//					
-//				}
-//			}
-//			StdDraw.clear();
-//			StdDraw.picture(10.5,8.5, "///C:/Users/wioui/Documents/Bomberman/src/Image/Bomberman.png");
-//			while (choixPerso1==null || choixPerso2==null){
-//				Contours red1=new Contours(2.6f,10.4f,3,3);
-//				Contours blue1=new Contours(2.6f,10.4f,3,3);
-//				Contours green1=new Contours(2.6f,10.4f,3,3);
-//				Contours black1=new Contours(2.6f,10.4f,3,3);
-//				Contours red2=new Contours(2.6f,10.4f,3,3);
-//				Contours blue2=new Contours(2.6f,10.4f,3,3);
-//				Contours green2=new Contours(2.6f,10.4f,3,3);
-//				Contours black2=new Contours(2.6f,10.4f,3,3);
-//				
-//				if(red1.test(StdDraw.mouseX(),StdDraw.mouseY(),red1) && StdDraw.mousePressed()){
-//					choixPerso1="red";
-//				}
-//				if(blue1.test(StdDraw.mouseX(),StdDraw.mouseY(),blue1) && StdDraw.mousePressed()){
-//					choixPerso1="blue";
-//				}
-//				if (green1.test(StdDraw.mouseX(),StdDraw.mouseY(),green1) && StdDraw.mousePressed()){
-//					choixPerso1="green";
-//				}
-//				if(black1.test(StdDraw.mouseX(),StdDraw.mouseY(),black1) && StdDraw.mousePressed()){
-//					choixPerso1="black";
-//				}
-//				
-//				if(red2.test(StdDraw.mouseX(),StdDraw.mouseY(),red2) && StdDraw.mousePressed()){
-//					choixPerso2="red";
-//				}
-//				if(blue2.test(StdDraw.mouseX(),StdDraw.mouseY(),blue2) && StdDraw.mousePressed()){
-//					choixPerso2="blue";
-//				}
-//				if (green2.test(StdDraw.mouseX(),StdDraw.mouseY(),red2) && StdDraw.mousePressed()){
-//					choixPerso2="green";
-//				}
-//				if(black2.test(StdDraw.mouseX(),StdDraw.mouseY(),red2) && StdDraw.mousePressed()){
-//					choixPerso2="black";
-//				}
-//			
-//			
-//			
-//		}
+        StdDraw.setYscale(-5, 17);
+        StdDraw.picture(10.5,8.5, "///C:/Users/wioui/Documents/Bomberman/src/Image/bomberman1.png");
+       
+        
+		while(!StdDraw.isKeyPressed(81)){
+			
+		if(StdDraw.isKeyPressed(32)){
+			 
+			 String choixPerso1=null;
+			 String choixPerso2=null;
+			 
+			StdDraw.clear();
+			StdDraw.picture(10.5,8.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/bomberman2.png");
+			while (choixPerso1==null || choixPerso2==null){
+				
+				
+				
+				
+				if((5<StdDraw.mouseY()&& 7>StdDraw.mouseY()) && (7.2<StdDraw.mouseX()&& 8.8>StdDraw.mouseX())  && StdDraw.mousePressed()){
+					if(choixPerso1=="white"){
+						StdDraw.picture(9, 7.2, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/Bomb.PNG");
+					}
+					else{
+						StdDraw.picture(10.5,8.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/bomberman2.png");
+					}
+					 
+					choixPerso1="white";
+					
+				}
+				if((5.5<StdDraw.mouseY()&& 7.5>StdDraw.mouseY()) && (4.5<StdDraw.mouseX()&& 6.1>StdDraw.mouseX())  && StdDraw.mousePressed()){
+					if(choixPerso1=="blue"){
+						StdDraw.picture(6.3, 7.2, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/Bomb.PNG");
+					}
+					else{
+						StdDraw.picture(10.5,8.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/bomberman2.png");
+					}
+					 
+					choixPerso1="blue";
+				}
+				if ((9<StdDraw.mouseY()&& 11.5>StdDraw.mouseY()) && (4.2<StdDraw.mouseX()&& 6.2>StdDraw.mouseX())  && StdDraw.mousePressed()){
+					if(choixPerso1=="green"){
+						StdDraw.picture(6.2, 11.5 , "file:///C:/Users/wioui/Documents/Bomberman/src/Image/Bomb.PNG");
+					}
+					else{
+						StdDraw.picture(10.5,8.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/bomberman2.png");
+					}
+					 
+					choixPerso1="green";
+				}
+				if((9<StdDraw.mouseY()&& 11.5>StdDraw.mouseY()) && (7.2<StdDraw.mouseX()&& 8.8>StdDraw.mouseX())  && StdDraw.mousePressed()){
+					if(choixPerso1=="black"){
+						StdDraw.picture(8.8, 11.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/Bomb.PNG");
+					}
+					else{
+						StdDraw.picture(10.5,8.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/bomberman2.png");
+					}
+					 
+					choixPerso1="black";
+				}
+				
+				if((5.4<StdDraw.mouseY()&& 7.7>StdDraw.mouseY()) && (17.5<StdDraw.mouseX()&& 19>StdDraw.mouseX())  && StdDraw.mousePressed()){
+					if(choixPerso2=="white"){
+						StdDraw.picture(19, 7.7, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/Bomb.PNG");
+					}
+					else{
+						StdDraw.picture(10.5,8.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/bomberman2.png");
+					}
+					 
+					choixPerso2="white";
+				}
+				if((5.5<StdDraw.mouseY()&& 7.5>StdDraw.mouseY()) && (14.6<StdDraw.mouseX()&& 16.2>StdDraw.mouseX())  && StdDraw.mousePressed()){
+					if(choixPerso2=="blue"){
+						StdDraw.picture(16.2, 7.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/Bomb.PNG");
+					}
+					else{
+						StdDraw.picture(10.5,8.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/bomberman2.png");
+					}
+					 
+					choixPerso2="blue";
+				}
+				if ((9<StdDraw.mouseY()&& 11.5>StdDraw.mouseY()) && (14.7<StdDraw.mouseX()&& 16.2>StdDraw.mouseX())  && StdDraw.mousePressed()){
+					if(choixPerso2=="green"){
+						StdDraw.picture(16.2, 11.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/Bomb.PNG");
+					}
+					else{
+						StdDraw.picture(10.5,8.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/bomberman2.png");
+					}
+					 
+					choixPerso2="green";
+				}
+				if((9<StdDraw.mouseY()&& 11.5>StdDraw.mouseY()) && (17.5<StdDraw.mouseX()&& 19>StdDraw.mouseX())  && StdDraw.mousePressed()){
+					if(choixPerso2=="black"){
+						StdDraw.picture(19, 11.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/Bomb.PNG");
+					}
+					else{
+						StdDraw.picture(10.5,8.5, "file:///C:/Users/wioui/Documents/Bomberman/src/Image/bomberman2.png");
+					}
+					 
+					choixPerso2="black";
+				}
+			
+			
+			
+		}
 			GameControl Conf1 =new GameControl(38,40,37,39,32);
 			GameControl Conf2 =new GameControl(90,83,81,68,88);
 			
 			
-			Perso J1=new Perso("yo", 19.5f,15.5f,"red", Conf1);
-			Perso J2= new Perso("op", 1.5f,1.5f,"red",Conf2);
+			Perso J1=new Perso("J1", 19.5f,15.5f,choixPerso1, Conf1);
+			Perso J2= new Perso("J2", 1.5f,1.5f,choixPerso2,Conf2);
+			
+			 StatPlayer statPlayer1 = new StatPlayer(J1);
+		     StatPlayer statPlayer2 = new StatPlayer(J2);
+		     
+		    Animation animation = new Animation(); 
+		    
 			listPerso.add(J1);
 			listPerso.add(J2);
 			
 			
 			
-			while (true) {
+			while (!J1.isDie() && !J2.isDie()) {
+				
 			
-			StdDraw.clear();
+			
 			laby.Affichage(); 
 			J1.affichageperso(J1.getX(), J1.getY());
 			J1.Deplacement(laby);
@@ -122,9 +157,13 @@ public class Main {
 			J2.affichageperso(J2.getX(), J2.getY());
 			J2.Deplacement(laby);
 			J2.poserBomb(laby,System.currentTimeMillis()/1000);
-			
+			J1.die();
+			J2.die();
+			statPlayer1.display("J1");
+            statPlayer2.display("J2");		
 			
 			StdDraw.show(16);
+			StdDraw.clear();
 		}
 		
 		
@@ -135,7 +174,7 @@ public class Main {
 		
 		
 				
-		}	
+		}}}
 
 	
 
