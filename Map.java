@@ -88,9 +88,13 @@ public class Map {
 					StdDraw.picture(i+0.5, j+0.5 ,"Image/Bricks.jpg");
 				}
 				
-				else if (laby[j][i]==2 || laby[j][i]==3) {
+				else if (laby[j][i]==2) {
 					StdDraw.setPenColor(StdDraw.GREEN);
 					StdDraw.picture(i+0.5, j+0.5 ,"Image/Floor.PNG");
+				}
+				else if (laby[j][i]==3) {
+					StdDraw.picture(i+0.5, j+0.5 ,"Image/Floor.PNG");
+					
 				}
 				
 				else if (laby[j][i]==5) {
@@ -132,6 +136,12 @@ public class Map {
 				}
 				else if(laby[j][i]==18){
 					StdDraw.picture(i+0.5, j+0.5, "bonus/football.png");
+				}
+				else if(laby[j][i]==19){
+					StdDraw.picture(i+0.5, j+0.5, "bonus/crosswall.png");
+				}
+				else if(laby[j][i]==20){
+					StdDraw.picture(i+0.5, j+0.5, "bonus/bouclier.png");
 				}
 				
 				

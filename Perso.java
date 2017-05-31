@@ -22,6 +22,7 @@ public class Perso {
 	public boolean die;
 	protected boolean crossWall;
     protected boolean canPushBomb;
+    protected boolean bouclier;
 	
 	
 	
@@ -42,7 +43,9 @@ public class Perso {
 		this.nbBomb=3;
 		this.bombe=new Bombes(x, y, System.currentTimeMillis(), 3);
 		this.touches=conf;
-		this.canPushBomb=true;
+		this.canPushBomb=false;
+		this.crossWall=false;
+		this.bouclier=false;
 	}
 	
 	
@@ -323,7 +326,7 @@ public class Perso {
 		laby.setLaby(blocx,blocy,2);
 		for(int i=0;i<this.listBomb.size();i++){
 			if(this.listBomb.get(i)!=null){
-				if (this.listBomb.get(i).getRange() < 10) {
+				if (this.listBomb.get(i).getRange() <= 10) {
 	                this.listBomb.get(i).setRange(this.listBomb.get(i).getRange()+ 1);
 	           }
 			}
@@ -369,7 +372,7 @@ public class Perso {
            }
 		if(laby.getLaby()[blocx][blocy] == 16){
 		laby.setLaby(blocx,blocy,2);
-		if(this.getNbBomb()<7){
+		if(this.getNbBomb()<=7){
 		this.setNbBomb((this.getNbBomb()+ 2));
 			}
                 
@@ -385,6 +388,33 @@ public class Perso {
 			laby.setLaby(blocx, blocy, 2);
 			this.setCanPushBomb(true);
 		}
+		
+		if(laby.getLaby()[blocx][blocy]==19){
+			laby.setLaby(blocx, blocy, 2);
+			this.setCrossWall(true);
+		}
+		if(laby.getLaby()[blocx][blocy]==20){
+			laby.setLaby(blocx, blocy, 2);
+			this.setBouclier(true);
+		}
+		if(laby.getLaby()[blocx][blocy] == 21){
+			laby.setLaby(blocx,blocy,2);
+			for(int i=0;i<this.listBomb.size();i++){
+				if(this.listBomb.get(i)!=null){
+					if(this.listBomb.get(i).getRange()<=10){
+						this.listBomb.get(i).setRange(this.listBomb.get(i).getRange()+1);						
+					}
+					if(this.listBomb.get(i).getExplosiontime()>=3){
+						this.listBomb.get(i).setExplosiontime(this.listBomb.get(i).getExplosiontime()-1);
+					}
+					
+		      
+				}
+			}
+		
+		}
+		
+		
 	}
 		
 	public void die(){
@@ -404,6 +434,17 @@ public class Perso {
 
 	public void setDie(boolean die) {
 		this.die = die;
+	}
+
+	
+
+	public boolean isBouclier() {
+		return bouclier;
+	}
+
+
+	public void setBouclier(boolean bouclier) {
+		this.bouclier = bouclier;
 	}
 
 
@@ -451,6 +492,8 @@ public class Perso {
 	public void setCrossWall(boolean crossWall) {
 		this.crossWall = crossWall;
 	}
+	
+	
 
 
 	public boolean isCanPushBomb() {

@@ -15,7 +15,7 @@ public class Bonus {
 	
 	public int chooseBonus(){
 		int min=10;
-		int max=19;
+		int max=22;
 		Random random = new Random();
 		int bonus=min+random.nextInt(max-min);
 		
@@ -26,7 +26,7 @@ public class Bonus {
 	public void activeBonus(Map laby, int blocx, int blocy){
 		int bonus=chooseBonus();
 		if(bonusOrNot()){
-			System.out.println(bonus);
+			
 			laby.setLaby(blocx, blocy, bonus);
 		}
 	}
