@@ -30,112 +30,113 @@ public class Main {
         
        
         
-//		while(!StdDraw.isKeyPressed(81)){
-//			
-//		if(StdDraw.isKeyPressed(32)){
-//			 
-//			 String choixPerso1=null;
-//			 String choixPerso2=null;
-//			 
-//			StdDraw.clear();
-//			StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
-//			while (choixPerso1==null || choixPerso2==null){
-//				
-//				
-//				
-//				
-//				if((5<StdDraw.mouseY()&& 7>StdDraw.mouseY()) && (7.2<StdDraw.mouseX()&& 8.8>StdDraw.mouseX())  && StdDraw.mousePressed()){
-//					if(choixPerso1=="white"){
-//						StdDraw.picture(9, 7.2, "Image/Bomb.PNG");
-//					}
-//					else{
-//						StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
-//					}
-//					 
-//					choixPerso1="white";
-//					
-//				}
-//				if((5.5<StdDraw.mouseY()&& 7.5>StdDraw.mouseY()) && (4.5<StdDraw.mouseX()&& 6.1>StdDraw.mouseX())  && StdDraw.mousePressed()){
-//					if(choixPerso1=="blue"){
-//						StdDraw.picture(6.3, 7.2, "Image/Bomb.PNG");
-//					}
-//					else{
-//						StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
-//					}
-//					 
-//					choixPerso1="blue";
-//				}
-//				if ((9<StdDraw.mouseY()&& 11.5>StdDraw.mouseY()) && (4.2<StdDraw.mouseX()&& 6.2>StdDraw.mouseX())  && StdDraw.mousePressed()){
-//					if(choixPerso1=="green"){
-//						StdDraw.picture(6.2, 11.5 , "Image/Bomb.PNG");
-//					}
-//					else{
-//						StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
-//					}
-//					 
-//					choixPerso1="green";
-//				}
-//				if((9<StdDraw.mouseY()&& 11.5>StdDraw.mouseY()) && (7.2<StdDraw.mouseX()&& 8.8>StdDraw.mouseX())  && StdDraw.mousePressed()){
-//					if(choixPerso1=="black"){
-//						StdDraw.picture(8.8, 11.5, "Image/Bomb.PNG");
-//					}
-//					else{
-//						StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
-//					}
-//					 
-//					choixPerso1="black";
-//				}
-//				
-//				if((5.4<StdDraw.mouseY()&& 7.7>StdDraw.mouseY()) && (17.5<StdDraw.mouseX()&& 19>StdDraw.mouseX())  && StdDraw.mousePressed()){
-//					if(choixPerso2=="white"){
-//						StdDraw.picture(19, 7.7, "Image/Bomb.PNG");
-//					}
-//					else{
-//						StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
-//					}
-//					 
-//					choixPerso2="white";
-//				}
-//				if((5.5<StdDraw.mouseY()&& 7.5>StdDraw.mouseY()) && (14.6<StdDraw.mouseX()&& 16.2>StdDraw.mouseX())  && StdDraw.mousePressed()){
-//					if(choixPerso2=="blue"){
-//						StdDraw.picture(16.2, 7.5, "Image/Bomb.PNG");
-//					}
-//					else{
-//						StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
-//					}
-//					 
-//					choixPerso2="blue";
-//				}
-//				if ((9<StdDraw.mouseY()&& 11.5>StdDraw.mouseY()) && (14.7<StdDraw.mouseX()&& 16.2>StdDraw.mouseX())  && StdDraw.mousePressed()){
-//					if(choixPerso2=="green"){
-//						StdDraw.picture(16.2, 11.5, "Image/Bomb.PNG");
-//					}
-//					else{
-//						StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
-//					}
-//					 
-//					choixPerso2="green";
-//				}
-//				if((9<StdDraw.mouseY()&& 11.5>StdDraw.mouseY()) && (17.5<StdDraw.mouseX()&& 19>StdDraw.mouseX())  && StdDraw.mousePressed()){
-//					if(choixPerso2=="black"){
-//						StdDraw.picture(19, 11.5, "Image/Bomb.PNG");
-//					}
-//					else{
-//						StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
-//					}
-//					 
-//					choixPerso2="black";
-//				}
-//			
-//			
-//			
-//		}
+		while(!StdDraw.isKeyPressed(81)){
+			
+		if(StdDraw.isKeyPressed(32)){
+			 
+			 String choixPerso1=null;
+			 String choixPerso2=null;
+			 
+			StdDraw.clear();
+			StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
+			while (choixPerso1==null || choixPerso2==null){
+				
+				
+				
+				
+				if((5<StdDraw.mouseY()&& 7>StdDraw.mouseY()) && (7.2<StdDraw.mouseX()&& 8.8>StdDraw.mouseX())  && StdDraw.mousePressed()){
+					if(choixPerso1=="white"){
+						StdDraw.picture(9, 7.2, "Image/Bomb.PNG");
+					}
+					else{
+						StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
+					}
+					 
+					choixPerso1="white";
+					
+				}
+				if((5.5<StdDraw.mouseY()&& 7.5>StdDraw.mouseY()) && (4.5<StdDraw.mouseX()&& 6.1>StdDraw.mouseX())  && StdDraw.mousePressed()){
+					if(choixPerso1=="blue"){
+						StdDraw.picture(6.3, 7.2, "Image/Bomb.PNG");
+					}
+					else{
+						StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
+					}
+					 
+					choixPerso1="blue";
+				}
+				if ((9<StdDraw.mouseY()&& 11.5>StdDraw.mouseY()) && (4.2<StdDraw.mouseX()&& 6.2>StdDraw.mouseX())  && StdDraw.mousePressed()){
+					if(choixPerso1=="green"){
+						StdDraw.picture(6.2, 11.5 , "Image/Bomb.PNG");
+					}
+					else{
+						StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
+					}
+					 
+					choixPerso1="green";
+				}
+				if((9<StdDraw.mouseY()&& 11.5>StdDraw.mouseY()) && (7.2<StdDraw.mouseX()&& 8.8>StdDraw.mouseX())  && StdDraw.mousePressed()){
+					if(choixPerso1=="black"){
+						StdDraw.picture(8.8, 11.5, "Image/Bomb.PNG");
+					}
+					else{
+						StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
+					}
+					 
+					choixPerso1="black";
+				}
+				
+				if((5.4<StdDraw.mouseY()&& 7.7>StdDraw.mouseY()) && (17.5<StdDraw.mouseX()&& 19>StdDraw.mouseX())  && StdDraw.mousePressed()){
+					if(choixPerso2=="white"){
+						StdDraw.picture(19, 7.7, "Image/Bomb.PNG");
+					}
+					else{
+						StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
+					}
+					 
+					choixPerso2="white";
+				}
+				if((5.5<StdDraw.mouseY()&& 7.5>StdDraw.mouseY()) && (14.6<StdDraw.mouseX()&& 16.2>StdDraw.mouseX())  && StdDraw.mousePressed()){
+					if(choixPerso2=="blue"){
+						StdDraw.picture(16.2, 7.5, "Image/Bomb.PNG");
+					}
+					else{
+						StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
+					}
+					 
+					choixPerso2="blue";
+				}
+				if ((9<StdDraw.mouseY()&& 11.5>StdDraw.mouseY()) && (14.7<StdDraw.mouseX()&& 16.2>StdDraw.mouseX())  && StdDraw.mousePressed()){
+					if(choixPerso2=="green"){
+						StdDraw.picture(16.2, 11.5, "Image/Bomb.PNG");
+					}
+					else{
+						StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
+					}
+					 
+					choixPerso2="green";
+				}
+				if((9<StdDraw.mouseY()&& 11.5>StdDraw.mouseY()) && (17.5<StdDraw.mouseX()&& 19>StdDraw.mouseX())  && StdDraw.mousePressed()){
+					if(choixPerso2=="black"){
+						StdDraw.picture(19, 11.5, "Image/Bomb.PNG");
+					}
+					else{
+						StdDraw.picture(10.5,8.5, "Image/bomberman2.png");
+					}
+					 
+					choixPerso2="black";
+				}
+			
+			
+			
+		}
+			
 			GameControl Conf1 =new GameControl(38,40,37,39,32);
 			GameControl Conf2 =new GameControl(90,83,81,68,88);
 			
 			
-			Perso J1=new Perso("J1", 19.5f,15.5f,"white", Conf1);
-			Perso J2= new Perso("J2", 1.5f,1.5f,"white",Conf2);
+			Perso J1=new Perso("J1", 18.5f,15.5f,choixPerso1, Conf1);
+			Perso J2= new Perso("J2", 1.5f,1.5f,choixPerso2,Conf2);
 			
 			 StatPlayer statPlayer1 = new StatPlayer(J1);
 		     StatPlayer statPlayer2 = new StatPlayer(J2);
@@ -173,11 +174,23 @@ public class Main {
                     }
                 }
             }
+            
+            
+            if(J1.isDie()){
+            	StdDraw.picture(5.5,8.5, "Image/J1.png");
+            	StdDraw.picture(12.5, 8.5, "Image/wasted.png");
+            }
+			else if (J2.isDie()){
+				StdDraw.picture(5.5, 8.5, "Image/J2.png");
+            	StdDraw.picture(12.5, 8.5, "Image/wasted.png");
+			}
 			StdDraw.show(16);
 			StdDraw.clear();
+			
+			
 		}
 		
-		
+			
 		
 		
 		}
@@ -185,6 +198,6 @@ public class Main {
 		
 		
 				
-		}
+		}}}
 	
 

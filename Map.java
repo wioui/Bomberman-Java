@@ -76,26 +76,21 @@ public class Map {
 
 	public  void Affichage(){
 		
+		StdDraw.picture(9, 8.5, "map/map1/map.PNG");
 		
 		for(int i=0;i<21;i++){
 			for(int j=0;j<17;j++){
+
 				if(laby[j][i]==0){
-					StdDraw.setPenColor(StdDraw.BLACK);
-					StdDraw.picture(i+0.5, j+0.5 ,"Image/MetalWall.PNG");
+					
+					StdDraw.picture(i+0.5, j+0.5 ,"map/map1/obstacle1.PNG");
 				}
 				else if(laby[j][i]==1){
 					StdDraw.setPenColor(StdDraw.ORANGE);
-					StdDraw.picture(i+0.5, j+0.5 ,"Image/Bricks.jpg");
+					StdDraw.picture(i+0.5, j+0.5 ,"map/map1/obstacle2.PNG");
 				}
 				
-				else if (laby[j][i]==2) {
-					StdDraw.setPenColor(StdDraw.GREEN);
-					StdDraw.picture(i+0.5, j+0.5 ,"Image/Floor.PNG");
-				}
-				else if (laby[j][i]==3) {
-					StdDraw.picture(i+0.5, j+0.5 ,"Image/Floor.PNG");
-					
-				}
+				
 				
 				else if (laby[j][i]==5) {
 					StdDraw.setPenColor(StdDraw.GREEN);
@@ -143,7 +138,10 @@ public class Map {
 				else if(laby[j][i]==20){
 					StdDraw.picture(i+0.5, j+0.5, "bonus/bouclier.png");
 				}
-				
+				else if(laby[j][i]==21){
+					
+					StdDraw.picture(i+0.5, j+0.5, "bonus/flamme-verte.png");
+				}
 				
 			}
 		}

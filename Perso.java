@@ -43,7 +43,7 @@ public class Perso {
 		this.nbBomb=3;
 		this.bombe=new Bombes(x, y, System.currentTimeMillis(), 3);
 		this.touches=conf;
-		this.canPushBomb=false;
+		this.canPushBomb=false;;
 		this.crossWall=false;
 		this.bouclier=false;
 	}
@@ -52,129 +52,121 @@ public class Perso {
 	public void affichageperso(float x, float y){
 		double beforex=(int)this.getX();
 		double beforey=(int)this.getY();
-//		StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B11.PNG");
-//		if (StdDraw.isKeyPressed(this.touches.getRIGHT())){
-//		if (this.getX() <= beforex + 0.125) {
-//			StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B1.PNG");
-//        }
-//        else if (beforex + 0.125 < this.getX()  && this.getX() <= beforex + 0.25 ) {
-//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B2.PNG");
-//        }
-//        else if (beforex + 0.25 < this.getX()  && this.getX() <= beforex + 0.375)  {
-//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B3.PNG");
-//        }
-//        else if (beforex + 0.375 < this.getX()  && this.getX() <= beforex + 0.5)  {
-//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B4.PNG");
-//        }
-//        else if (beforex + 0.5 < this.getX()  && this.getX() <= beforex + 0.625)  {
-//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B5.PNG");
-//        }
-//        else if (beforex + 0.625 < this.getX()  && this.getX() <= beforex + 0.75)  {
-//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B6.PNG");
-//        }
-//        else if (beforex + 0.75 < this.getX()  && this.getX() <= beforex + 0.875)  {
-//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B7.PNG");
-//        }
-//        else {
-//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B8.PNG");
-//        }
-//		
-//		}
-//		if (StdDraw.isKeyPressed(this.touches.getLEFT())){
-//		if (this.getX() <= beforex + 0.125) {
-//			StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B10.PNG");
-//        }
-//        else if (beforex + 0.125 < this.getX()  && this.getX() <= beforex + 0.25 ) {
-//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B20.PNG");
-//        }
-//        else if (beforex + 0.25 < this.getX()  && this.getX() <= beforex + 0.375)  {
-//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B30.PNG");
-//        }
-//        else if (beforex + 0.375 < this.getX()  && this.getX() <= beforex + 0.5)  {
-//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B40.PNG");
-//        }
-//        else if (beforex + 0.5 < this.getX()  && this.getX() <= beforex + 0.625)  {
-//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B50.PNG");
-//        }
-//        else if (beforex + 0.625 < this.getX()  && this.getX() <= beforex + 0.75)  {
-//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B60.PNG");
-//        }
-//        else if (beforex + 0.75 < this.getX()  && this.getX() <= beforex + 0.875)  {
-//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B70.PNG");
-//        }
-//        else {
-//        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B80.PNG");
-//        }
-//		
-//		}
-//		if (StdDraw.isKeyPressed(this.touches.getUP())){
-//			if (this.getY() <= beforey + 0.125) {
-//				StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B110.PNG");
-//	        }
-//	        else if (beforey + 0.125 < this.getY()  && this.getY() <= beforey + 0.25 ) {
-//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B210.PNG");
-//	        }
-//	        else if (beforey + 0.25 < this.getY()  && this.getY() <= beforey + 0.375)  {
-//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B310.PNG");
-//	        }
-//	        else if (beforey + 0.375 < this.getY()  && this.getY() <= beforey + 0.5)  {
-//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B410.PNG");
-//	        }
-//	        else if (beforey + 0.5 < this.getY()  && this.getY() <= beforey + 0.625)  {
-//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B510.PNG");
-//	        }
-//	        else if (beforey + 0.625 < this.getY()  && this.getY() <= beforey + 0.75)  {
-//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B610.PNG");
-//	        }
-//	        else if (beforey + 0.75 < this.getY()  && this.getY() <= beforey + 0.875)  {
-//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B710.PNG");
-//	        }
-//	        else {
-//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B810.PNG");
-//	        }
-//			
-//			}
-//			if (StdDraw.isKeyPressed(this.touches.getDOWN())){
-//			if (this.getY() <= beforey + 0.125) {
-//				StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B11.PNG");
-//	        }
-//	        else if (beforey + 0.125 < this.getY()  && this.getY() <= beforey + 0.25 ) {
-//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B21.PNG");
-//	        }
-//	        else if (beforey + 0.25 < this.getY()  && this.getY() <= beforey + 0.375)  {
-//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B31.PNG");
-//	        }
-//	        else if (beforey + 0.375 < this.getY()  && this.getY() <= beforey + 0.5)  {
-//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B41.PNG");
-//	        }
-//	        else if (beforey + 0.5 < this.getY()  && this.getY() <= beforey + 0.625)  {
-//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B51.PNG");
-//	        }
-//	        else if (beforey + 0.625 < this.getY()  && this.getY() <= beforey + 0.75)  {
-//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B61.PNG");
-//	        }
-//	        else if (beforey + 0.75 < this.getY()  && this.getY() <= beforey + 0.875)  {
-//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B71.PNG");
-//	        }
-//	        else {
-//	        	StdDraw.picture(x, y, "///C:/Users/wioui/Documents/Bomberman/src/Image/"+this.couleur+"B81.PNG");
-//	        }
-//			}
+//		StdDraw.picture(x, y, "player-"+this.couleur+"/down1.png");
+		if (StdDraw.isKeyPressed(this.touches.getRIGHT())){
+		if (this.getX() <= beforex + 0.125) {
+			StdDraw.picture(x, y, "player-"+this.couleur+"/right1.png");
+        }
+        else if (beforex + 0.125 < this.getX()  && this.getX() <= beforex + 0.25 ) {
+        	StdDraw.picture(x, y, "player-"+this.couleur+"/right2.png");
+        }
+        else if (beforex + 0.25 < this.getX()  && this.getX() <= beforex + 0.375)  {
+        	StdDraw.picture(x, y, "player-"+this.couleur+"/right3.png");
+        }
+        else if (beforex + 0.375 < this.getX()  && this.getX() <= beforex + 0.5)  {
+        	StdDraw.picture(x, y, "player-"+this.couleur+"/right4.png");
+        }
+        else if (beforex + 0.5 < this.getX()  && this.getX() <= beforex + 0.625)  {
+        	StdDraw.picture(x, y, "player-"+this.couleur+"/right5.png");
+        }
+        else if (beforex + 0.625 < this.getX()  && this.getX() <= beforex + 0.75)  {
+        	StdDraw.picture(x, y, "player-"+this.couleur+"/right6.png");
+        }
+        else if (beforex + 0.75 < this.getX()  && this.getX() <= beforex + 0.875)  {
+        	StdDraw.picture(x, y, "player-"+this.couleur+"/right7.png");
+        }
+        else {
+        	StdDraw.picture(x, y, "player-"+this.couleur+"/right8.png");
+        }
+		
+		}
+		if (StdDraw.isKeyPressed(this.touches.getLEFT())){
+		if (this.getX() <= beforex + 0.125) {
+			StdDraw.picture(x, y, "player-"+this.couleur+"/left1.png");
+        }
+        else if (beforex + 0.125 < this.getX()  && this.getX() <= beforex + 0.25 ) {
+        	StdDraw.picture(x, y, "player-"+this.couleur+"/left2.png");
+        }
+        else if (beforex + 0.25 < this.getX()  && this.getX() <= beforex + 0.375)  {
+        	StdDraw.picture(x, y, "player-"+this.couleur+"/left3.png");
+        }
+        else if (beforex + 0.375 < this.getX()  && this.getX() <= beforex + 0.5)  {
+        	StdDraw.picture(x, y, "player-"+this.couleur+"/left4.png");
+        }
+        else if (beforex + 0.5 < this.getX()  && this.getX() <= beforex + 0.625)  {
+        	StdDraw.picture(x, y, "player-"+this.couleur+"/left5.png");
+        }
+        else if (beforex + 0.625 < this.getX()  && this.getX() <= beforex + 0.75)  {
+        	StdDraw.picture(x, y, "player-"+this.couleur+"/left6.png");
+        }
+        else if (beforex + 0.75 < this.getX()  && this.getX() <= beforex + 0.875)  {
+        	StdDraw.picture(x, y, "player-"+this.couleur+"/left7.png");
+        }
+        else {
+        	StdDraw.picture(x, y, "player-"+this.couleur+"/left8.png");
+        }
+		
+		}
+		if (StdDraw.isKeyPressed(this.touches.getUP())){
+			if (this.getY() <= beforey + 0.125) {
+				StdDraw.picture(x, y, "player-"+this.couleur+"/up1.png");
+	        }
+	        else if (beforey + 0.125 < this.getY()  && this.getY() <= beforey + 0.25 ) {
+	        	StdDraw.picture(x, y, "player-"+this.couleur+"/up2.png");
+	        }
+	        else if (beforey + 0.25 < this.getY()  && this.getY() <= beforey + 0.375)  {
+	        	StdDraw.picture(x, y, "player-"+this.couleur+"/up3.png");
+	        }
+	        else if (beforey + 0.375 < this.getY()  && this.getY() <= beforey + 0.5)  {
+	        	StdDraw.picture(x, y, "player-"+this.couleur+"/up4.png");
+	        }
+	        else if (beforey + 0.5 < this.getY()  && this.getY() <= beforey + 0.625)  {
+	        	StdDraw.picture(x, y, "player-"+this.couleur+"/up5.png");
+	        }
+	        else if (beforey + 0.625 < this.getY()  && this.getY() <= beforey + 0.75)  {
+	        	StdDraw.picture(x, y, "player-"+this.couleur+"/up6.png");
+	        }
+	        else if (beforey + 0.75 < this.getY()  && this.getY() <= beforey + 0.875)  {
+	        	StdDraw.picture(x, y, "player-"+this.couleur+"/up7.png");
+	        }
+	        else {
+	        	StdDraw.picture(x, y, "player-"+this.couleur+"/up8.png");
+	        }
+			
+			}
+			if (StdDraw.isKeyPressed(this.touches.getDOWN())){
+			if (this.getY() <= beforey + 0.125) {
+				StdDraw.picture(x, y, "player-"+this.couleur+"/down1.png");
+	        }
+	        else if (beforey + 0.125 < this.getY()  && this.getY() <= beforey + 0.25 ) {
+	        	StdDraw.picture(x, y, "player-"+this.couleur+"/down2.png");
+	        }
+	        else if (beforey + 0.25 < this.getY()  && this.getY() <= beforey + 0.375)  {
+	        	StdDraw.picture(x, y, "player-"+this.couleur+"/down3.png");
+	        }
+	        else if (beforey + 0.375 < this.getY()  && this.getY() <= beforey + 0.5)  {
+	        	StdDraw.picture(x, y, "player-"+this.couleur+"/down4.png");
+	        }
+	        else if (beforey + 0.5 < this.getY()  && this.getY() <= beforey + 0.625)  {
+	        	StdDraw.picture(x, y, "player-"+this.couleur+"/down5.png");
+	        }
+	        else if (beforey + 0.625 < this.getY()  && this.getY() <= beforey + 0.75)  {
+	        	StdDraw.picture(x, y, "player-"+this.couleur+"/down6.png");
+	        }
+	        else if (beforey + 0.75 < this.getY()  && this.getY() <= beforey + 0.875)  {
+	        	StdDraw.picture(x, y, "player-"+this.couleur+"/down7.png");
+	        }
+	        else {
+	        	StdDraw.picture(x, y, "player-"+this.couleur+"/down8.png");
+	        }
+			
         	
-		if(this.couleur=="white"){
-			StdDraw.picture(x, y, "Image/"+this.couleur+".PNG");
-		}
-		if(this.couleur=="black"){
-			StdDraw.picture(x, y, "Image/"+this.couleur+".PNG");
-		}
-		if(this.couleur=="green"){
-			StdDraw.picture(x, y, "Image/"+this.couleur+".PNG");
-		}
-		if(this.couleur=="blue"){
-			StdDraw.picture(x, y, "Image/"+this.couleur+".PNG");
-		}
 		
 		
+			}
+			else if (!StdDraw.isKeyPressed(this.touches.getDOWN()) && !StdDraw.isKeyPressed(this.touches.getUP()) && !StdDraw.isKeyPressed(this.touches.getLEFT()) && !StdDraw.isKeyPressed(this.touches.getRIGHT())){
+				StdDraw.picture(x, y, "player-"+this.couleur+"/down1.png");
+			}
 	}
 	
 	private boolean detectionCol (Map laby,float x,float y){
@@ -200,28 +192,43 @@ public class Perso {
 	private boolean detectionColBomb (Map laby, float x, float y, int direction){
 		Contours contour =new Contours(x+(0.5f-taille +taille/2),y+(0.5f-taille+taille/2),taille,taille);
 		
-		if(!listBomb.isEmpty()){
-			for(int it=0;it<listBomb.size();it++){
-			if (this.listBomb.get(it)!=null){
-				if(!this.listBomb.get(it).isEscapeActive()){
-							
-							Contours obstacle =new Contours(this.listBomb.get(it).getBlocx()+0.5f,this.listBomb.get(it).getBlocy()+0.5f,1f,1f);
-							
-							if(contour.test(obstacle)){
-								
-							 if(this.canPushBomb){
-								 this.listBomb.get(it).setDirection(direction);
-							 }
-								return true;
+		if(!this.listBomb.isEmpty()){
+			for(int i=0;i< Main.listPerso.size();i++){
+				if(Main.listPerso.get(i)!=null){
+					for(int it=0;it<Main.listPerso.get(i).listBomb.size();it++){
+						if (Main.listPerso.get(i).listBomb.get(it)!=null){
+							if(!Main.listPerso.get(i).listBomb.get(it).isEscapeActive()){
+										
+										Contours obstacle =new Contours(Main.listPerso.get(i).listBomb.get(it).getBlocx()+0.5f,Main.listPerso.get(i).listBomb.get(it).getBlocy()+0.5f,1f,1f);
+										
+										if(contour.test(obstacle)){
+											
+										 if(this.canPushBomb){
+											 Main.listPerso.get(i).listBomb.get(it).setDirection(direction);
+										 }
+											return true;
+										}
+								}
+								}	
+							}	
 							}
-					}
-					}	
-				}	
 				}
+			}
+			
 			
 		return false;
-		
+			
+	}
 	
+	private boolean detectionColPlayer(Map laby, int x, int y){
+		for(int i=0;i< Main.listPerso.size();i++){
+			if(Main.listPerso.get(i).getBlocx()==x && Main.listPerso.get(i).getBlocy()==y){
+				System.out.println("ok");
+				return true;
+			}
+			
+	}
+		return false;
 	}
 	
 	public void Deplacement(Map laby){
