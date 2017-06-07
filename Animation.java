@@ -2,7 +2,7 @@ import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
 
-import edu.princeton.cs.introcs.StdDraw;
+/*import edu.princeton.cs.introcs.StdDraw;*/
 
 
 public class Animation extends Main {
@@ -176,7 +176,8 @@ public class Animation extends Main {
 //           int Y= this.bombe.getListCoordExplosion().get(item)[1]; 
 //           int a=X;
 //           int b=Y;
-//           StdDraw.picture(X+0.5, Y+0.5 ,"Image/item.png");//           
+//           StdDraw.picture(X+0.5, Y+0.5 ,"Image/item.png");
+//           
 //         
 //       
 //           if(this.bombe.getListCoordExplosion().size()==1){
