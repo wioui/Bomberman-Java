@@ -1,10 +1,11 @@
-import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
+
 
 import edu.princeton.cs.introcs.StdDraw;
 
 /*import edu.princeton.cs.introcs.StdDraw;*/
+
 public class Perso {
 
     protected String name;
@@ -17,9 +18,11 @@ public class Perso {
     private String couleur;
     private float taille = 0.6f;
     private Bombes bombe;
+    private int range = 3;
     protected List<Bombes> listBomb;
     private Bonus bonus = new Bonus();
     private int nbBomb;
+    private int nbBombInMoment =3;
     private GameControl touches;
     public boolean die;
     protected boolean crossWall;
@@ -137,7 +140,7 @@ public class Perso {
         Contours contour = new Contours(x + (0.5f - taille + taille / 2), y + (0.5f - taille + taille / 2), taille, taille);
         for (int i = 0; i < 21; i++) {
             for (int j = 0; j < 17; j++) {
-                if (laby.getLaby()[i][j] == 0 || laby.getLaby()[i][j] == 1) {
+                if (laby.getLaby()[i][j] == 0 || laby.getLaby()[i][j] == 1 || laby.getLaby()[i][j] == 9) {
 
                     Contours obstacle = new Contours(i + 0.5f, j + 0.5f, 1f, 1f);
 
@@ -195,7 +198,7 @@ public class Perso {
         return false;
     }
 
-    public void Deplacement(Map laby) {
+    public void Deplacement(Map laby, StatPlayer statPlayer) {
         if (StdDraw.isKeyPressed(this.touches.getUP())) {
             if (detectionCol(laby, x, y + 0.1f) || detectionColBomb(laby, x, y + 0.1f, 1)) {
                 this.y += 0;
@@ -237,7 +240,7 @@ public class Perso {
 
         }
 
-        this.takeBonus(laby, getBlocx(), getBlocy());
+        this.takeBonus(laby, getBlocx(), getBlocy(), statPlayer);
 
     }
 
@@ -260,8 +263,8 @@ public class Perso {
                 int compteur = this.nbBombList();
                 System.out.println(compteur);
                 if (compteur <= this.getNbBomb()) {
-
-                    Bombes bombe = new Bombes((int) this.x + 0.5f, (int) this.y + 0.5f, time, 3);
+                    nbBombInMoment -=1;
+                    Bombes bombe = new Bombes((int) this.x + 0.5f, (int) this.y + 0.5f, time, this.range);
 
                     this.listBomb.add(bombe);
                     bombe.setId((listBomb.size() - 1));
@@ -283,7 +286,7 @@ public class Perso {
 
     }
 
-    public void takeBonus(Map laby, int blocx, int blocy) {
+    public void takeBonus(Map laby, int blocx, int blocy, StatPlayer statPlayer) {
 
         if (laby.getLaby()[blocx][blocy] == 10) {
             laby.setLaby(blocx, blocy, 2);
@@ -324,18 +327,21 @@ public class Perso {
         if (laby.getLaby()[blocx][blocy] == 14) {
             laby.setLaby(blocx, blocy, 2);
             if (this.getVitesse() < 0.130f) {
+                statPlayer.setSpeed(statPlayer.getSpeed()+1);
                 this.setVitesse((float) (this.getVitesse() + 0.005f));
             }
         }
         if (laby.getLaby()[blocx][blocy] == 15) {
             laby.setLaby(blocx, blocy, 2);
             if (this.getVitesse() > 0) {
+                statPlayer.setSpeed(statPlayer.getSpeed()-1);
                 this.setVitesse((float) (this.getVitesse() - 0.005f));
             }
         }
         if (laby.getLaby()[blocx][blocy] == 16) {
             laby.setLaby(blocx, blocy, 2);
             if (this.getNbBomb() <= 7) {
+                this.nbBombInMoment+=2;
                 this.setNbBomb((this.getNbBomb() + 2));
             }
 
@@ -343,6 +349,7 @@ public class Perso {
         if (laby.getLaby()[blocx][blocy] == 17) {
             laby.setLaby(blocx, blocy, 2);
             if (this.getNbBomb() > 2) {
+                this.nbBombInMoment -=2;
                 this.setNbBomb((this.getNbBomb() - 2));
             }
 
@@ -554,5 +561,15 @@ public class Perso {
         return (int) Math.floor(y);
     }
 
+    public int getNbBombInMoment() {
+        return nbBombInMoment;
+    }
 
+    public void setNbBombInMoment(int nbBombInMoment) {
+        this.nbBombInMoment = nbBombInMoment;
+    }
+
+    public String getCouleur() {
+        return couleur;
+    }
 }
