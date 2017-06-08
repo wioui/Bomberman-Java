@@ -390,6 +390,16 @@ public class Perso {
 
     }
 
+    public void restartPlayer() {
+        this.setVie(3);
+        this.setNbBomb(3);
+        this.setVitesse(0.4f);
+        this.setBouclier(false);
+        this.setCanPushBomb(false);
+        this.setCrossWall(false);
+
+    }
+
     public void die() {
         if (this.getVie() <= 0) {
             this.die = true;

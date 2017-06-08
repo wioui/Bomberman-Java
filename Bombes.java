@@ -230,20 +230,20 @@ public class Bombes {
             }
         }
         else if (this.direction == 3) {
-            if (laby.getLaby()[this.getBlocx()][this.getBlocy()-1]==1 ||laby.getLaby()[this.getBlocx()][this.getBlocy()-1]==0 ||laby.getLaby()[this.getBlocx()][this.getBlocy()-1]==3 || laby.getLaby()[this.getBlocx()][this.getBlocy()+1]== 9) {
+            if (laby.getLaby()[this.getBlocx()][this.getBlocy()-1]==1 ||laby.getLaby()[this.getBlocx()][this.getBlocy()-1]==0 ||laby.getLaby()[this.getBlocx()][this.getBlocy()-1]==3 || laby.getLaby()[this.getBlocx()][this.getBlocy()-1]== 9) {
                 /*this.direction = 1;*/
                 this.bomby-= 0;
             }
             else {
             	laby.setLaby(this.getBlocx(), this.getBlocy(), 2);
             	laby.setLaby(this.getBlocx(), this.getBlocy()-1, 3);
-                this.bomby-= 0.3;
+                this.bomby-= 1;
             }
 
 
         }
         else if (direction == 2) {
-            if (laby.getLaby()[this.getBlocx()+1][this.getBlocy()]==1 ||laby.getLaby()[this.getBlocx()+1][this.getBlocy()]==0 ||laby.getLaby()[this.getBlocx()+1][this.getBlocy()]==3 || laby.getLaby()[this.getBlocx()][this.getBlocy()+1]==9) {
+            if (laby.getLaby()[this.getBlocx()+1][this.getBlocy()]==1 ||laby.getLaby()[this.getBlocx()+1][this.getBlocy()]==0 ||laby.getLaby()[this.getBlocx()+1][this.getBlocy()]==3 || laby.getLaby()[this.getBlocx()+1][this.getBlocy()+1]==9) {
                 /*this.direction = 4;*/
                 this.bombx += 0;
             }
@@ -258,7 +258,7 @@ public class Bombes {
         }
 
         else if (direction == 4) {
-            if (laby.getLaby()[this.getBlocx()-1][this.getBlocy()]==1 ||laby.getLaby()[this.getBlocx()-1][this.getBlocy()]==0 ||laby.getLaby()[this.getBlocx()-1][this.getBlocy()]==3 || laby.getLaby()[this.getBlocx()][this.getBlocy()+1]==9) {
+            if (laby.getLaby()[this.getBlocx()-1][this.getBlocy()]==1 ||laby.getLaby()[this.getBlocx()-1][this.getBlocy()]==0 ||laby.getLaby()[this.getBlocx()-1][this.getBlocy()]==3 || laby.getLaby()[this.getBlocx()-1][this.getBlocy()+1]==9) {
                 /*this.direction = 2;*/
                 this.bombx -= 0;
             }
@@ -307,7 +307,6 @@ public class Bombes {
 			}
 		}
 		return explo;
-		
 	}
 	
 	private void explosionOnBomb(Map laby,int blocx,int blocy){

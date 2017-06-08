@@ -11,6 +11,7 @@ public class Main {
     static Map laby = new Map();
     static LinkedList<Animation> listAnimationBomb = new LinkedList<>();
     static boolean choosePlayer = false;
+    static boolean play = true;
 
 
 
@@ -25,6 +26,7 @@ public class Main {
 
 
         while (!StdDraw.isKeyPressed(81)) {
+
 
             if (StdDraw.isKeyPressed(32)) {
 
@@ -174,18 +176,26 @@ public class Main {
                         }
                     }
 
+                    if (J1.isDie() || J2.isDie()) {
+                        if (J1.isDie()) {
+                            StdDraw.picture(5.5, 8.5, "Image/J1.png");
+                            StdDraw.picture(12.5, 8.5, "Image/wasted.png");
 
-                    if (J1.isDie()) {
-                        StdDraw.picture(5.5, 8.5, "Image/J1.png");
-                        StdDraw.picture(12.5, 8.5, "Image/wasted.png");
-                    } else if (J2.isDie()) {
-                        StdDraw.picture(5.5, 8.5, "Image/J2.png");
-                        StdDraw.picture(12.5, 8.5, "Image/wasted.png");
+
+
+                        } else if (J2.isDie()) {
+                            StdDraw.picture(5.5, 8.5, "Image/J2.png");
+                            StdDraw.picture(12.5, 8.5, "Image/wasted.png");
+                        }
+                        J2.restartPlayer();
+                        J1.restartPlayer();
+                        laby.restartMap();
+
                     }
+
+
                     StdDraw.show(16);
                     StdDraw.clear();
-
-
                 }
 
 
