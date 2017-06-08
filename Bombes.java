@@ -47,9 +47,7 @@ public class Bombes {
 		boolean exploR=true;
 		boolean exploL=true;
 		boolean exploall=true;
-		Audio explosion =new Audio("son/explosion.wav");
-		explosion.play();
-		explosion.stop();
+		
 		
 		this.animationTime = System.currentTimeMillis()+1500;
 		
@@ -75,9 +73,9 @@ public class Bombes {
                     laby.setLaby(this.getBlocx(), this.getBlocy(), 2);
                     addPosToList(this.getBlocx(), this.getBlocy());
                 }
+                explosionOnplayer(joueur, this.getBlocx(),this.getBlocy(), exploU);
 
-
-                if ((this.getBlocy()+range) < 17) {
+               if ((this.getBlocy()+range) < 17) {
 
                     if ((laby.getLaby()[this.getBlocx()][this.getBlocy() + range] == 0)) {
                         exploU = false;
@@ -98,7 +96,7 @@ public class Bombes {
                         exploU = false;
 
                     }
-                    if ((laby.getLaby()[this.getBlocx()][this.getBlocy() + range] == 2  && exploU)) {
+                    else if ((laby.getLaby()[this.getBlocx()][this.getBlocy() + range] == 2  && exploU)) {
                         addPosToList(this.getBlocx(), this.getBlocy() + range);
                     }
 
@@ -110,29 +108,29 @@ public class Bombes {
 
                 if (this.getBlocy()-range >= 0){
                 	if ((laby.getLaby()[this.getBlocx()][this.getBlocy() - range] == 0)) {
-                        exploU = false;
+                        exploD = false;
 
                     }
 
-                    else if ((laby.getLaby()[this.getBlocx()][this.getBlocy() - range] == 1 && exploU)) {
+                    else if ((laby.getLaby()[this.getBlocx()][this.getBlocy() - range] == 1 && exploD)) {
 
                         addPosToList(this.getBlocx(), this.getBlocy() - range);
                         laby.setLaby(this.getBlocx(), this.getBlocy() - range, 2);
                         joueur.getBonus().activeBonus(laby, this.getBlocx(),this.getBlocy()-range);
                         if (!joueur.crossWall) {
-                            exploU = false;
+                            exploD = false;
                         }
                     }
-                    else if  (laby.getLaby()[this.getBlocx()][this.getBlocy() - range] == 3 && exploU) {
+                    else if  (laby.getLaby()[this.getBlocx()][this.getBlocy() - range] == 3 && exploD) {
                     	explosionOnBomb(laby,this.getBlocx(),this.getBlocy()-range);
-                        exploU = false;
+                        exploD = false;
 
                     }
-                    if ((laby.getLaby()[this.getBlocx()][this.getBlocy() - range] == 2  && exploU)) {
+                    else if ((laby.getLaby()[this.getBlocx()][this.getBlocy() - range] == 2  && exploD)) {
                         addPosToList(this.getBlocx(), this.getBlocy() - range);
                     }
 
-                    explosionOnplayer(joueur, this.getBlocx(),this.getBlocy()-range, exploU);
+                    explosionOnplayer(joueur, this.getBlocx(),this.getBlocy()-range, exploD);
                 }
 
                 if (this.getBlocx()-range >= 0){
@@ -151,7 +149,7 @@ public class Bombes {
                         explosionOnBomb(laby,this.getBlocx() - range,this.getBlocy());
                         exploL = false;
                     }
-                    if ((laby.getLaby()[this.getBlocx()-range][this.getBlocy()] == 2  && exploL)) {
+                    else if ((laby.getLaby()[this.getBlocx()-range][this.getBlocy()] == 2  && exploL)) {
                         addPosToList(this.getBlocx() -range, this.getBlocy());
                     }
                     explosionOnplayer(joueur,this.getBlocx() -range,this.getBlocy(), exploL);
@@ -173,14 +171,15 @@ public class Bombes {
                         explosionOnBomb(laby,this.getBlocx() + range,this.getBlocy());
                         exploR = false;
                     }
-                    if ((laby.getLaby()[this.getBlocx() + range][this.getBlocy()] == 2  && exploR)) {
+                    else if ((laby.getLaby()[this.getBlocx() + range][this.getBlocy()] == 2  && exploR)) {
                         addPosToList(this.getBlocx() + range, this.getBlocy());
                     }
                     explosionOnplayer(joueur,this.getBlocx() +range,this.getBlocy(), exploR);
                 }
 
             }
-			
+			Audio explosion = new Audio("son/explosion.wav");
+			explosion.play();
 			Animation animationExplo = new Animation(this, this.id);
 			Main.listAnimationBomb.add(this.id, animationExplo);
             
@@ -191,7 +190,7 @@ public class Bombes {
 				if(joueur.listBomb.get(j)!=null){
 					if(joueur.listBomb.get(j).getId()==this.getId()){
 						joueur.listBomb.set(j,null);
-						break;
+						
 					}
 					
 				}
@@ -287,9 +286,13 @@ public class Bombes {
 	private boolean explosionOnplayer(Perso joueur, int blocx, int blocy, boolean explo){
 		for(int i=0;i< Main.listPerso.size();i++){
 			if(Main.listPerso.get(i).getBlocx()==blocx && Main.listPerso.get(i).getBlocy()==blocy &&explo){
+				
+	            
 				if(Main.listPerso.get(i).isBouclier()==false){
 					explo=false;
 					Main.listPerso.get(i).setVie(Main.listPerso.get(i).getVie()-1);
+					Audio aie = new Audio("son/aie.wav");
+					aie.play();
 					Main.listPerso.get(i).setX(Main.listPerso.get(i).getInitx());
 					Main.listPerso.get(i).setY(Main.listPerso.get(i).getInity());
 

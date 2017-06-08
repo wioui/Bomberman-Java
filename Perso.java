@@ -1,7 +1,15 @@
 import java.util.LinkedList;
 import java.util.List;
 
+
 import edu.princeton.cs.introcs.StdDraw;
+
+
+
+
+/*import edu.princeton.cs.introcs.StdDraw;*/
+
+
 public class Perso {
 
     protected String name;
@@ -14,11 +22,11 @@ public class Perso {
     private String couleur;
     private float taille = 0.6f;
     private Bombes bombe;
-    private int range = 3;
+    protected int range = 3;
     protected List<Bombes> listBomb;
     private Bonus bonus = new Bonus();
     private int nbBomb;
-    private int nbBombInMoment =3;
+    protected int nbBombInMoment =3;
     private GameControl touches;
     public boolean die;
     protected boolean crossWall;
@@ -132,7 +140,7 @@ public class Perso {
         }
     }
 
-    private boolean detectionCol(Map laby, float x, float y) {
+    protected boolean detectionCol(Map laby, float x, float y) {
         Contours contour = new Contours(x + (0.5f - taille + taille / 2), y + (0.5f - taille + taille / 2), taille, taille);
         for (int i = 0; i < 21; i++) {
             for (int j = 0; j < 17; j++) {
@@ -152,7 +160,7 @@ public class Perso {
 
     }
 
-    private boolean detectionColBomb(Map laby, float x, float y, int direction) {
+    protected boolean detectionColBomb(Map laby, float x, float y, int direction) {
         Contours contour = new Contours(x + (0.5f - taille + taille / 2), y + (0.5f - taille + taille / 2), taille, taille);
 
         if (!this.listBomb.isEmpty()) {
@@ -241,7 +249,7 @@ public class Perso {
     }
 
 
-    private int nbBombList() {
+    protected int nbBombList() {
         int compteur = 1;
         for (int i = 0; i < this.listBomb.size(); i++) {
             if (this.listBomb.get(i) != null) {
@@ -387,10 +395,11 @@ public class Perso {
         if (this.getVie() <= 0) {
         	boolean delai = false;
             this.die = true;
-            Audio wasted = new Audio("son/wasted.mp3");
+            if (delai == false){
+            Audio wasted = new Audio("son/wasted.wav");
             wasted.play();
             
-            delai = true;
+            delai = true;}
             
             if (delai==true){
             Audio victoire = new Audio("son/victoire.wav");

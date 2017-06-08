@@ -12,11 +12,12 @@ public class Main {
     public static LinkedList<Perso> listPerso = new LinkedList<>();
     static Map laby = new Map();
     static LinkedList<Animation> listAnimationBomb = new LinkedList<>();
-    static boolean choosePlayer = false;
+    static boolean choosePlayer = true;
 
 
     public static void main(String[] args) {
-    	
+    	Audio menu = new Audio("son/menu.WAV");
+    	Audio jeu = new Audio("son/KONG.WAV");
         StdDraw.setCanvasSize(24*30, 22*30);
         StdDraw.setXscale(-3, 21);
         StdDraw.setYscale(-5, 17);
@@ -37,7 +38,8 @@ public class Main {
 
                 StdDraw.picture(10.5, 8.5, "Image/bomberman2.png");
                 while (choixPerso1 == null || choixPerso2 == null) {
-
+                	
+                	menu.loop();
                     if (choosePlayer) {
 
                         if ((5 < StdDraw.mouseY() && 7 > StdDraw.mouseY()) && (7.2 < StdDraw.mouseX() && 8.8 > StdDraw.mouseX()) && StdDraw.mousePressed()) {
@@ -119,26 +121,27 @@ public class Main {
                         choixPerso2 = "blue";
                     }
                 }
-
+                menu.stop();
+                jeu.loop();
 
                 GameControl Conf1 = new GameControl(90, 83, 81, 68, 88);
                 GameControl Conf2 = new GameControl(38, 40, 37, 39, 32);
 
 
                 Perso J1 = new Perso("J1", 1.5f, 1.5f, choixPerso1, Conf1);
-                Perso J2 = new Perso("J2", 19.5f, 15.5f, choixPerso2, Conf2);
-
+                //Perso J2 = new Perso("J2", 19.5f, 15.5f, choixPerso2, Conf2);
+                Ia IA = new Ia("IA",19.5f, 15.5f, choixPerso2, Conf2);
 
 
                 StatPlayer statPlayers = new StatPlayer(System.currentTimeMillis()/1000);
 
 
                 listPerso.add(J1);
-                listPerso.add(J2);
+                listPerso.add(IA);
 
                 StdDraw.enableDoubleBuffering();
 
-                while (!J1.isDie() && !J2.isDie()) {
+                while (!J1.isDie() && !IA.isDie()) {//REMETTRE APRES J2
 
 
                     laby.Affichage();
@@ -149,13 +152,17 @@ public class Main {
                     J1.affichageperso(J1.getX(), J1.getY());
                     J1.Deplacement(laby, statPlayers);
                     J1.poserBomb(laby, System.currentTimeMillis() / 1000);
-                    J2.affichageperso(J2.getX(), J2.getY());
-                    J2.Deplacement(laby,statPlayers);
-                    J2.poserBomb(laby, System.currentTimeMillis() / 1000);
-
+                   // J2.affichageperso(J2.getX(), J2.getY());
+                  //  J2.Deplacement(laby, statPlayers);
+                    IA.affichageperso(IA.getX(), IA.getY());
+                    IA.chemin(laby,Main.listPerso.get(0).getY(),Main.listPerso.get(0).getX());
+                  
+                   // J2.poserBomb(laby, System.currentTimeMillis() / 1000);
+                    
 
                     J1.die();
-                    J2.die();
+                   // J2.die();
+                    IA.die();
                     statPlayers.display();
                     statPlayers.displayTime();
 
@@ -173,9 +180,11 @@ public class Main {
                     if (J1.isDie()) {
                         StdDraw.picture(5.5, 8.5, "Image/J1.png");
                         StdDraw.picture(12.5, 8.5, "Image/wasted.png");
-                    } else if (J2.isDie()) {
+                        jeu.stop();
+                    } else if (IA.isDie()) {//REMETTRE LE J2
                         StdDraw.picture(5.5, 8.5, "Image/J2.png");
                         StdDraw.picture(12.5, 8.5, "Image/wasted.png");
+                        jeu.stop();
                     }
                     StdDraw.show(16);
                     StdDraw.clear();
