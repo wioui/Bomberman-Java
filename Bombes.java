@@ -49,7 +49,7 @@ public class Bombes {
 		boolean exploall=true;
 		
 		
-		this.animationTime = System.currentTimeMillis()+1500;
+		this.animationTime = System.currentTimeMillis()+500;
 		
 		 if(joueur.canPushBomb) { 
 	            bonusPushBomb(joueur,laby);
@@ -216,7 +216,7 @@ public class Bombes {
 		
 	public void bonusPushBomb(Perso joueur, Map laby) {
     	if (this.direction == 1) {
-    	    if (laby.getLaby()[this.getBlocx()][this.getBlocy()+1]==1 ||laby.getLaby()[this.getBlocx()][this.getBlocy()+1]==0 ||laby.getLaby()[this.getBlocx()][this.getBlocy()+1]==3) {
+    	    if (laby.getLaby()[this.getBlocx()][this.getBlocy()+1]==1 ||laby.getLaby()[this.getBlocx()][this.getBlocy()+1]==0 ||laby.getLaby()[this.getBlocx()][this.getBlocy()+1]==3 || laby.getLaby()[this.getBlocx()][this.getBlocy()+1]==9) {
     	        /*this.direction = 3;*/
     	        this.bomby+=0;
 
@@ -224,25 +224,25 @@ public class Bombes {
             else {
             	laby.setLaby(this.getBlocx(), this.getBlocy(), 2);
             	laby.setLaby(this.getBlocx(), this.getBlocy()+1, 3);
-                this.bomby+=1;
+                this.bomby+= 1;
 
             }
         }
         else if (this.direction == 3) {
-            if (laby.getLaby()[this.getBlocx()][this.getBlocy()-1]==1 ||laby.getLaby()[this.getBlocx()][this.getBlocy()-1]==0 ||laby.getLaby()[this.getBlocx()][this.getBlocy()-1]==3) {
+            if (laby.getLaby()[this.getBlocx()][this.getBlocy()-1]==1 ||laby.getLaby()[this.getBlocx()][this.getBlocy()-1]==0 ||laby.getLaby()[this.getBlocx()][this.getBlocy()-1]==3 || laby.getLaby()[this.getBlocx()][this.getBlocy()+1]== 9) {
                 /*this.direction = 1;*/
-                this.bomby-=0;
+                this.bomby-= 0;
             }
             else {
             	laby.setLaby(this.getBlocx(), this.getBlocy(), 2);
             	laby.setLaby(this.getBlocx(), this.getBlocy()-1, 3);
-                this.bomby-=1;
+                this.bomby-= 0.3;
             }
 
 
         }
         else if (direction == 2) {
-            if (laby.getLaby()[this.getBlocx()+1][this.getBlocy()]==1 ||laby.getLaby()[this.getBlocx()+1][this.getBlocy()]==0 ||laby.getLaby()[this.getBlocx()+1][this.getBlocy()]==3) {
+            if (laby.getLaby()[this.getBlocx()+1][this.getBlocy()]==1 ||laby.getLaby()[this.getBlocx()+1][this.getBlocy()]==0 ||laby.getLaby()[this.getBlocx()+1][this.getBlocy()]==3 || laby.getLaby()[this.getBlocx()][this.getBlocy()+1]==9) {
                 /*this.direction = 4;*/
                 this.bombx += 0;
             }
@@ -257,7 +257,7 @@ public class Bombes {
         }
 
         else if (direction == 4) {
-            if (laby.getLaby()[this.getBlocx()-1][this.getBlocy()]==1 ||laby.getLaby()[this.getBlocx()-1][this.getBlocy()]==0 ||laby.getLaby()[this.getBlocx()-1][this.getBlocy()]==3) {
+            if (laby.getLaby()[this.getBlocx()-1][this.getBlocy()]==1 ||laby.getLaby()[this.getBlocx()-1][this.getBlocy()]==0 ||laby.getLaby()[this.getBlocx()-1][this.getBlocy()]==3 || laby.getLaby()[this.getBlocx()][this.getBlocy()+1]==9) {
                 /*this.direction = 2;*/
                 this.bombx -= 0;
             }
@@ -265,10 +265,7 @@ public class Bombes {
             	laby.setLaby(this.getBlocx(), this.getBlocy(), 2);
             	laby.setLaby(this.getBlocx()-1, this.getBlocy(), 3);
                 this.bombx -= 1;
-
             }
-
-
         }
 
 
@@ -287,7 +284,12 @@ public class Bombes {
 			if(Main.listPerso.get(i).getBlocx()==blocx && Main.listPerso.get(i).getBlocy()==blocy &&explo){
 				if(Main.listPerso.get(i).isBouclier()==false){
 					explo=false;
-					Main.listPerso.get(i).setVie(Main.listPerso.get(i).getVie()-1);
+					/*if (Main.listPerso.get(i).isCanDie()) {*/
+						Main.listPerso.get(i).setVie(Main.listPerso.get(i).getVie() - 1);
+						/*System.out.println("salut");*/
+						/*Main.listPerso.get(i).setCanDie(false);*/
+					/*}*/
+
 					Main.listPerso.get(i).setX(Main.listPerso.get(i).getInitx());
 					Main.listPerso.get(i).setY(Main.listPerso.get(i).getInity());
 

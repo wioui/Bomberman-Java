@@ -28,6 +28,7 @@ public class Perso {
     protected boolean crossWall;
     protected boolean canPushBomb;
     protected boolean bouclier;
+    private boolean canDie = true;
 
 
     public Perso(String name, float initx, float inity, String couleur, GameControl conf) {
@@ -135,6 +136,8 @@ public class Perso {
             StdDraw.picture(x, y + 0.4, "player-" + this.couleur + "/down1.png");
         }
     }
+
+
 
     private boolean detectionCol(Map laby, float x, float y) {
         Contours contour = new Contours(x + (0.5f - taille + taille / 2), y + (0.5f - taille + taille / 2), taille, taille);
@@ -571,5 +574,14 @@ public class Perso {
 
     public String getCouleur() {
         return couleur;
+    }
+
+    public boolean isCanDie() {
+        return canDie;
+    }
+
+    public void setCanDie(boolean canDie) {
+
+        this.canDie = canDie;
     }
 }
