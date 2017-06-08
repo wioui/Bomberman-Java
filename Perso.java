@@ -22,7 +22,7 @@ public class Perso {
     private int vie = 3;
     protected float vitesse = 0.04f;
     private String couleur;
-    private float taille = 0.6f;
+    protected float taille = 0.6f;
     private Bombes bombe;
     protected int range = 3;
     protected List<Bombes> listBomb;

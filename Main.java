@@ -11,6 +11,7 @@ public class Main {
 
     public static LinkedList<Perso> listPerso = new LinkedList<>();
     static Map laby = new Map();
+    static Map copy = new Map();
     static LinkedList<Animation> listAnimationBomb = new LinkedList<>();
     static boolean choosePlayer = false;
 
@@ -155,7 +156,7 @@ public class Main {
                 
 
 
-
+                	IA.changementMap(laby);
                     laby.Affichage();
 
 
@@ -169,7 +170,7 @@ public class Main {
                    // J2.affichageperso(J2.getX(), J2.getY());
                   //  J2.Deplacement(laby, statPlayers);
                     IA.affichageperso(IA.getX(), IA.getY());
-                    IA.chemin(laby,Main.listPerso.get(0).getY(),Main.listPerso.get(0).getX());
+                    IA.chemin(laby,copy,Main.listPerso.get(0).getY(),Main.listPerso.get(0).getX());
                   
                    // J2.poserBomb(laby, System.currentTimeMillis() / 1000);
                     
