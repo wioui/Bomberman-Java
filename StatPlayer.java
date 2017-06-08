@@ -4,11 +4,13 @@
 public class StatPlayer {
 
 
-    int speed = 1;
-    double time ;
-    boolean playerKick;
-    boolean playerShield;
-    boolean playerCross;
+    private int speed = 1;
+    private double time ;
+    private boolean playerKick;
+    private boolean playerShield;
+    private boolean playerCross;
+    private int range;
+
 
     
 
@@ -37,14 +39,17 @@ public class StatPlayer {
 
 
                 if (i == 0) {
-                    playerCross = Main.listPerso.get(0).isCrossWall();
-                    playerKick = Main.listPerso.get(0).isCanPushBomb();
-                    playerShield = Main.listPerso.get(0).isBouclier();
+                    this.playerCross = Main.listPerso.get(0).isCrossWall();
+                    this.playerKick = Main.listPerso.get(0).isCanPushBomb();
+                    this.playerShield = Main.listPerso.get(0).isBouclier();
+                    this.range = Main.listPerso.get(0).getRange();
+
 
                     StdDraw.picture(-1.5,-1.4,returnHeadPlayer(couleur,0));
                     numberToImage(life,"normal",-0.4f,-3.8f);
                     numberToImage(numberBomb,"normal", 2.5f, -3.8f);
                     numberToImage(this.speed,"normal", 5.4f, -3.8f);
+                    numberToImage(this.range,"normal", 8.1f, -3.8f);
                     if (playerKick) {
                         StdDraw.picture(1.4, -1.7, "menu-in-game/super-bonus/football.png");
                     }
@@ -57,14 +62,16 @@ public class StatPlayer {
 
                 }
                 else if (i == 1) {
-                    playerCross = Main.listPerso.get(1).isCrossWall();
-                    playerKick = Main.listPerso.get(1).isCanPushBomb();
-                    playerShield = Main.listPerso.get(1).isBouclier();
+                    this.playerCross = Main.listPerso.get(1).isCrossWall();
+                    this.playerKick = Main.listPerso.get(1).isCanPushBomb();
+                    this.playerShield = Main.listPerso.get(1).isBouclier();
+                    this.range = Main.listPerso.get(1).getRange();
 
                     StdDraw.picture(19.5,-1.4,returnHeadPlayer(couleur,1));
                     numberToImage(life,"normal",11.5f,-3.8f);
                     numberToImage(numberBomb,"normal", 14.5f, -3.8f);
                     numberToImage(this.speed,"normal", 17.1f, -3.8f);
+                    numberToImage(this.range,"normal", 20f, -3.8f);
                     if (playerKick) {
                         StdDraw.picture(13.5, -1.7, "menu-in-game/super-bonus/football.png");
                     }

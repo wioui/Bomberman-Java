@@ -68,7 +68,7 @@ public class Bombes {
 			int nbBomb = joueur.getNbBombInMoment();
 			joueur.setNbBombInMoment(nbBomb+=1);
 			System.out.println(nbBomb);
-			for (int range = 1; range <= this.getRange(); range ++) {
+			for (int range = 1; range <= joueur.getRange(); range ++) {
 
                 if (laby.getLaby()[this.getBlocx()][this.getBlocy()] !=0 ) {
                     laby.setLaby(this.getBlocx(), this.getBlocy(), 2);

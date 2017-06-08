@@ -18,7 +18,7 @@ public class Perso {
     private String couleur;
     private float taille = 0.6f;
     private Bombes bombe;
-    private int range = 3;
+
     protected List<Bombes> listBomb;
     private Bonus bonus = new Bonus();
     private int nbBomb;
@@ -30,6 +30,7 @@ public class Perso {
     protected boolean bouclier;
     private boolean canDie = true;
     private int lastKey;
+    private int range;
 
 
     public Perso(String name, float initx, float inity, String couleur, GameControl conf) {
@@ -49,6 +50,7 @@ public class Perso {
         this.crossWall = false;
         this.bouclier = false;
         this.lastKey = 3;
+        this.range = 3;
     }
 
 
@@ -330,20 +332,15 @@ public class Perso {
             laby.setLaby(blocx, blocy, 2);
             for (int i = 0; i < this.listBomb.size(); i++) {
                 if (this.listBomb.get(i) != null) {
-                    if (this.listBomb.get(i).getRange() > 1) {
-                        this.listBomb.get(i).setRange(this.listBomb.get(i).getRange() - 1);
+                    if (this.range > 1) {
+                        this.range -= 1;
                     }
                 }
             }
         }
         if (laby.getLaby()[blocx][blocy] == 12) {
             laby.setLaby(blocx, blocy, 2);
-            for (int i = 0; i < this.listBomb.size(); i++) {
-                if (this.listBomb.get(i) != null) {
-                    this.listBomb.get(i).setRange(10);
-
-                }
-            }
+            this.range = 10;
 
         }
 
@@ -398,8 +395,8 @@ public class Perso {
             laby.setLaby(blocx, blocy, 2);
             for (int i = 0; i < this.listBomb.size(); i++) {
                 if (this.listBomb.get(i) != null) {
-                    if (this.listBomb.get(i).getRange() <= 10) {
-                        this.listBomb.get(i).setRange(this.listBomb.get(i).getRange() + 1);
+                    if (this.range <= 10) {
+                        this.range += 1;
                     }
                     if (this.listBomb.get(i).getExplosiontime() >= 3) {
                         this.listBomb.get(i).setExplosiontime(this.listBomb.get(i).getExplosiontime() - 1);
@@ -617,5 +614,13 @@ public class Perso {
     public void setCanDie(boolean canDie) {
 
         this.canDie = canDie;
+    }
+
+    public int getRange() {
+        return range;
+    }
+
+    public void setRange(int range) {
+        this.range = range;
     }
 }
