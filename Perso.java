@@ -1,13 +1,15 @@
 import java.util.LinkedList;
 import java.util.List;
 
-
 import edu.princeton.cs.introcs.StdDraw;
 
 
 
 
-/*import edu.princeton.cs.introcs.StdDraw;*/
+
+
+
+
 
 
 public class Perso {
@@ -32,6 +34,7 @@ public class Perso {
     protected boolean crossWall;
     protected boolean canPushBomb;
     protected boolean bouclier;
+    private boolean canDie = true;
 
 
     public Perso(String name, float initx, float inity, String couleur, GameControl conf) {
@@ -140,7 +143,13 @@ public class Perso {
         }
     }
 
+
     protected boolean detectionCol(Map laby, float x, float y) {
+
+
+
+   
+
         Contours contour = new Contours(x + (0.5f - taille + taille / 2), y + (0.5f - taille + taille / 2), taille, taille);
         for (int i = 0; i < 21; i++) {
             for (int j = 0; j < 17; j++) {
@@ -587,5 +596,14 @@ public class Perso {
 
     public String getCouleur() {
         return couleur;
+    }
+
+    public boolean isCanDie() {
+        return canDie;
+    }
+
+    public void setCanDie(boolean canDie) {
+
+        this.canDie = canDie;
     }
 }

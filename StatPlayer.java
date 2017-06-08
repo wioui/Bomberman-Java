@@ -1,4 +1,5 @@
 
+
 import edu.princeton.cs.introcs.StdDraw;
 
  
@@ -9,13 +10,18 @@ import java.awt.Color;
 
 
 
-/*import edu.princeton.cs.introcs.StdDraw;*/
+
 
 public class StatPlayer {
 
 
     int speed = 1;
     double time ;
+    boolean playerKick;
+    boolean playerShield;
+    boolean playerCross;
+
+    
 
 
     public StatPlayer(double time) {
@@ -29,8 +35,11 @@ public class StatPlayer {
         int life, numberBomb, rangeBomb;
         String couleur;
 
+
+
         for (int i = 0; i < Main.listPerso.size(); i++) {
             if(Main.listPerso.get(i)!=null){
+
                 life = Main.listPerso.get(i).getVie();
                 /*numberBomb = Main.listPerso.get(i).getNbBomb();*/
                 numberBomb =Main.listPerso.get(i).getNbBombInMoment();
@@ -39,16 +48,43 @@ public class StatPlayer {
 
 
                 if (i == 0) {
+                    playerCross = Main.listPerso.get(0).isCrossWall();
+                    playerKick = Main.listPerso.get(0).isCanPushBomb();
+                    playerShield = Main.listPerso.get(0).isBouclier();
+
                     StdDraw.picture(-1.5,-1.4,returnHeadPlayer(couleur,0));
                     numberToImage(life,"normal",-0.4f,-3.8f);
                     numberToImage(numberBomb,"normal", 2.5f, -3.8f);
                     numberToImage(this.speed,"normal", 5.4f, -3.8f);
+                    if (playerKick) {
+                        StdDraw.picture(1.4, -1.7, "menu-in-game/super-bonus/football.png");
+                    }
+                    if (playerCross) {
+                        StdDraw.picture(2.9, -1.7, "menu-in-game/super-bonus/crosswall.png");
+                    }
+                    if (playerShield) {
+                        StdDraw.picture(4.4, -1.7, "menu-in-game/super-bonus/bouclier.png");
+                    }
+
                 }
                 else if (i == 1) {
+                    playerCross = Main.listPerso.get(1).isCrossWall();
+                    playerKick = Main.listPerso.get(1).isCanPushBomb();
+                    playerShield = Main.listPerso.get(1).isBouclier();
+
                     StdDraw.picture(19.5,-1.4,returnHeadPlayer(couleur,1));
                     numberToImage(life,"normal",11.5f,-3.8f);
                     numberToImage(numberBomb,"normal", 14.5f, -3.8f);
                     numberToImage(this.speed,"normal", 17.1f, -3.8f);
+                    if (playerKick) {
+                        StdDraw.picture(13.5, -1.7, "menu-in-game/super-bonus/football.png");
+                    }
+                    if (playerCross) {
+                        StdDraw.picture(15.1, -1.7, "menu-in-game/super-bonus/crosswall.png");
+                    }
+                    if (playerShield) {
+                        StdDraw.picture(16.6, -1.7, "menu-in-game/super-bonus/bouclier.png");
+                    }
                 }
             }
 

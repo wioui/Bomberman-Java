@@ -240,7 +240,11 @@ public void poserBombi(Map laby, long time) {
         }
     }
 }
-
+public void changementMap(Map copy){
+	for (int i =0; i< listPerso.size(); i++){
+		
+	}
+}
 
 	
 	//public void attaque(Map laby, long time){
