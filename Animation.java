@@ -2,8 +2,6 @@ import java.awt.*;
 import java.util.List;
 
 
-import edu.princeton.cs.introcs.StdDraw;
-
 /*import edu.princeton.cs.introcs.StdDraw;*/
 
 

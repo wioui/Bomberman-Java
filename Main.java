@@ -1,21 +1,22 @@
 import java.util.LinkedList;
 
-import edu.princeton.cs.introcs.StdDraw;
-
-/*import edu.princeton.cs.introcs.StdDraw;
 
 
-import edu.princeton.cs.introcs.StdDraw;*/
+
+
 
 public class Main {
 
     public static LinkedList<Perso> listPerso = new LinkedList<>();
     static Map laby = new Map();
     static LinkedList<Animation> listAnimationBomb = new LinkedList<>();
-    static boolean choosePlayer = true;
+    static boolean choosePlayer = false;
+
+
 
 
     public static void main(String[] args) {
+
 
         StdDraw.setCanvasSize(24*30, 22*30);
         StdDraw.setXscale(-3, 21);
@@ -139,10 +140,13 @@ public class Main {
                 StdDraw.enableDoubleBuffering();
 
 
+
                 while (!J1.isDie() && !J2.isDie()) {
 
 
                     laby.Affichage();
+
+
 
 
 
