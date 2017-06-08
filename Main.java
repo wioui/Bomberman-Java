@@ -9,6 +9,8 @@ import java.util.Scanner;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import edu.princeton.cs.introcs.StdDraw;
+
 /*import edu.princeton.cs.introcs.StdDraw;
 
 
