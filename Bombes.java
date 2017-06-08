@@ -17,6 +17,7 @@ public class Bombes {
 	private int explosiontime;
 	private float range;
 	private boolean escapeActive;
+	private boolean canTakeLife = true;
 	private int id;
 	public  List<Integer[]> listCoordExplosion = new LinkedList<>();
 	int direction;
@@ -266,6 +267,8 @@ public class Bombes {
             	laby.setLaby(this.getBlocx()-1, this.getBlocy(), 3);
                 this.bombx -= 1;
             }
+
+
         }
 
 
@@ -284,9 +287,11 @@ public class Bombes {
 			if(Main.listPerso.get(i).getBlocx()==blocx && Main.listPerso.get(i).getBlocy()==blocy &&explo){
 				if(Main.listPerso.get(i).isBouclier()==false){
 					explo=false;
-					/*if (Main.listPerso.get(i).isCanDie()) {*/
+					if (this.canTakeLife) {
 						Main.listPerso.get(i).setVie(Main.listPerso.get(i).getVie() - 1);
-						/*System.out.println("salut");*/
+						canTakeLife = false;
+					}
+
 						/*Main.listPerso.get(i).setCanDie(false);*/
 					/*}*/
 
