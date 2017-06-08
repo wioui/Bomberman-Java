@@ -5,6 +5,7 @@ public class StatPlayer {
 
     int speed = 1;
     double time ;
+    
 
 
     public StatPlayer(double time) {

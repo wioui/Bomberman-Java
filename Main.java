@@ -136,6 +136,7 @@ public class Main {
 
                 StdDraw.enableDoubleBuffering();
 
+
                 while (!J1.isDie() && !J2.isDie()) {
 
 
