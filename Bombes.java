@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -65,6 +64,9 @@ public class Bombes {
 		 bombeAnimation.drawSpriteBombe(this.getBombx(), this.getBomby(), this);
 		
 		if (this.timeDrop+this.explosiontime < System.currentTimeMillis()/1000){
+			int nbBomb = joueur.getNbBombInMoment();
+			joueur.setNbBombInMoment(nbBomb+=1);
+			System.out.println(nbBomb);
 			for (int range = 1; range <= this.getRange(); range ++) {
 
                 if (laby.getLaby()[this.getBlocx()][this.getBlocy()] !=0 ) {
