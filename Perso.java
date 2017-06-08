@@ -29,6 +29,7 @@ public class Perso {
     protected boolean canPushBomb;
     protected boolean bouclier;
     private boolean canDie = true;
+    private int lastKey;
 
 
     public Perso(String name, float initx, float inity, String couleur, GameControl conf) {
@@ -45,9 +46,9 @@ public class Perso {
         this.bombe = new Bombes(x, y, System.currentTimeMillis(), 3);
         this.touches = conf;
         this.canPushBomb = false;
-        ;
         this.crossWall = false;
         this.bouclier = false;
+        this.lastKey = 3;
     }
 
 
@@ -56,6 +57,7 @@ public class Perso {
         double beforey = (int) this.getY();
 //		StdDraw.picture(x, y, "player-"+this.couleur+"/down1.png");
         if (StdDraw.isKeyPressed(this.touches.getRIGHT())) {
+            lastKey = 2;
             if (this.getX() <= beforex + 0.125) {
                 StdDraw.picture(x, y + 0.4, "player-" + this.couleur + "/right1.png");
             } else if (beforex + 0.125 < this.getX() && this.getX() <= beforex + 0.25) {
@@ -74,7 +76,9 @@ public class Perso {
                 StdDraw.picture(x, y + 0.4, "player-" + this.couleur + "/right8.png");
             }
 
+
         } else if (StdDraw.isKeyPressed(this.touches.getLEFT())) {
+            lastKey = 4;
             if (this.getX() <= beforex + 0.125) {
                 StdDraw.picture(x, y + 0.4, "player-" + this.couleur + "/left1.png");
             } else if (beforex + 0.125 < this.getX() && this.getX() <= beforex + 0.25) {
@@ -94,6 +98,7 @@ public class Perso {
             }
 
         } else if (StdDraw.isKeyPressed(this.touches.getUP())) {
+            lastKey = 1;
             if (this.getY() <= beforey + 0.125) {
                 StdDraw.picture(x, y + 0.4, "player-" + this.couleur + "/up1.png");
             } else if (beforey + 0.125 < this.getY() && this.getY() <= beforey + 0.25) {
@@ -113,6 +118,7 @@ public class Perso {
             }
 
         } else if (StdDraw.isKeyPressed(this.touches.getDOWN())) {
+            lastKey = 3;
             if (this.getY() <= beforey + 0.125) {
                 StdDraw.picture(x, y + 0.4, "player-" + this.couleur + "/down1.png");
             } else if (beforey + 0.125 < this.getY() && this.getY() <= beforey + 0.25) {
@@ -132,9 +138,27 @@ public class Perso {
             }
 
 
-        } else if (!StdDraw.isKeyPressed(this.touches.getDOWN()) && !StdDraw.isKeyPressed(this.touches.getUP()) && !StdDraw.isKeyPressed(this.touches.getLEFT()) && !StdDraw.isKeyPressed(this.touches.getRIGHT())) {
-            StdDraw.picture(x, y + 0.4, "player-" + this.couleur + "/down1.png");
         }
+        else {
+            switch (lastKey) {
+                case 1:
+                    StdDraw.picture(x, y + 0.4, "player-" + this.couleur + "/up1.png");
+                    break;
+                case 2:
+                    StdDraw.picture(x, y + 0.4, "player-" + this.couleur + "/right1.png");
+                    break;
+                case 3:
+                    StdDraw.picture(x, y + 0.4, "player-" + this.couleur + "/down1.png");
+                    break;
+                case 4:
+                    StdDraw.picture(x, y + 0.4, "player-" + this.couleur + "/left1.png");
+            }
+
+        }
+
+        /*else if (!StdDraw.isKeyPressed(this.touches.getDOWN()) && !StdDraw.isKeyPressed(this.touches.getUP()) && !StdDraw.isKeyPressed(this.touches.getLEFT()) && !StdDraw.isKeyPressed(this.touches.getRIGHT())) {
+            StdDraw.picture(x, y + 0.4, "player-" + this.couleur + "/down1.png");
+        }*/
     }
 
 
