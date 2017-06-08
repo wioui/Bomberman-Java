@@ -14,6 +14,7 @@ public class Main {
     static Map copy = new Map();
     static LinkedList<Animation> listAnimationBomb = new LinkedList<>();
     static boolean choosePlayer = true;
+    static boolean j1VsIa = false;
 
 
 
@@ -136,85 +137,157 @@ public class Main {
 
 
                 Perso J1 = new Perso("J1", 1.5f, 1.5f, choixPerso1, Conf1);
-                //Perso J2 = new Perso("J2", 19.5f, 15.5f, choixPerso2, Conf2);
+                Perso J2 = new Perso("J2", 19.5f, 15.5f, choixPerso2, Conf2);
                 Ia IA = new Ia("IA",19.5f, 15.5f, choixPerso2, Conf2);
 
 
                 StatPlayer statPlayers = new StatPlayer(System.currentTimeMillis()/1000);
+                if (j1VsIa == true){
+                
+	                listPerso.add(J1);
+	                listPerso.add(IA);
+	
+	                StdDraw.enableDoubleBuffering();
+	
+	
+	                while (!J1.isDie() && !IA.isDie()) {//REMETTRE APRES J2
+	
+	
+	
+	                
+	
+	
+	                	IA.changementMap(copy);
+	                    laby.Affichage();
+	                    
+	
+	
+	
+	
+	
+	
+	                    J1.affichageperso(J1.getX(), J1.getY());
+	                    J1.Deplacement(laby, statPlayers);
+	                    J1.poserBomb(laby, System.currentTimeMillis() / 1000);
+	                   // J2.affichageperso(J2.getX(), J2.getY());
+	                  //  J2.Deplacement(laby, statPlayers);
+	                    IA.affichageperso(IA.getX(), IA.getY());
+	                    IA.chemin(laby,copy,Main.listPerso.get(0).getY(),Main.listPerso.get(0).getX());
+	                    IA.escape(laby, copy);
+	                  
+	                   // J2.poserBomb(laby, System.currentTimeMillis() / 1000);
+	                    
+	
+	                    J1.die();
+	                   // J2.die();
+	                    IA.die();
+	                    statPlayers.display();
+	                    statPlayers.displayTime();
+	
+	
+	
+	                    if (!listAnimationBomb.isEmpty()) {
+	                        for (int animationBomb = 0; animationBomb < listAnimationBomb.size(); animationBomb++) {
+	                            if (listAnimationBomb.get(animationBomb) != null) {
+	                                listAnimationBomb.get(animationBomb).startAnimationBomb();
+	                            }
+	                        }
+	                    }
+	
+	
+	                    if (J1.isDie()) {
+	                        StdDraw.picture(5.5, 8.5, "Image/J1.png");
+	                        StdDraw.picture(12.5, 8.5, "Image/wasted.png");
+	                        jeu.stop();
+	                    } else if (IA.isDie()) {//REMETTRE LE J2
+	                        StdDraw.picture(5.5, 8.5, "Image/J2.png");
+	                        StdDraw.picture(12.5, 8.5, "Image/wasted.png");
+	                        jeu.stop();
+	                    }
+	                    StdDraw.show(16);
+	                    StdDraw.clear();
+	
+	
+	                }
+	
+	
+	            }
+	
+	
+	        
+	    
+        else{
+        	listPerso.add(J1);
+            listPerso.add(J2);
+
+            StdDraw.enableDoubleBuffering();
 
 
-                listPerso.add(J1);
-                listPerso.add(IA);
-
-                StdDraw.enableDoubleBuffering();
-
-
-                while (!J1.isDie() && !IA.isDie()) {//REMETTRE APRES J2
+            while (!J1.isDie() && !J2.isDie()) {
 
 
 
+            
+
+
+            	
+                laby.Affichage();
                 
 
 
-                	IA.changementMap(laby);
-                    laby.Affichage();
-                    
 
 
 
 
+                J1.affichageperso(J1.getX(), J1.getY());
+                J1.Deplacement(laby, statPlayers);
+                J1.poserBomb(laby, System.currentTimeMillis() / 1000);
+              
+                J2.affichageperso(J2.getX(), J2.getY());
+                J2.Deplacement(laby, statPlayers);
+                J2.poserBomb(laby, System.currentTimeMillis() / 1000);
+              
+              
+                
 
-
-                    J1.affichageperso(J1.getX(), J1.getY());
-                    J1.Deplacement(laby, statPlayers);
-                    J1.poserBomb(laby, System.currentTimeMillis() / 1000);
-                   // J2.affichageperso(J2.getX(), J2.getY());
-                  //  J2.Deplacement(laby, statPlayers);
-                    IA.affichageperso(IA.getX(), IA.getY());
-                    IA.chemin(laby,copy,Main.listPerso.get(0).getY(),Main.listPerso.get(0).getX());
-                    IA.escape(laby, copy);
-                  
-                   // J2.poserBomb(laby, System.currentTimeMillis() / 1000);
-                    
-
-                    J1.die();
-                   // J2.die();
-                    IA.die();
-                    statPlayers.display();
-                    statPlayers.displayTime();
+                J1.die();
+                J2.die();
+                
+                statPlayers.display();
+                statPlayers.displayTime();
 
 
 
-                    if (!listAnimationBomb.isEmpty()) {
-                        for (int animationBomb = 0; animationBomb < listAnimationBomb.size(); animationBomb++) {
-                            if (listAnimationBomb.get(animationBomb) != null) {
-                                listAnimationBomb.get(animationBomb).startAnimationBomb();
-                            }
+                if (!listAnimationBomb.isEmpty()) {
+                    for (int animationBomb = 0; animationBomb < listAnimationBomb.size(); animationBomb++) {
+                        if (listAnimationBomb.get(animationBomb) != null) {
+                            listAnimationBomb.get(animationBomb).startAnimationBomb();
                         }
                     }
-
-
-                    if (J1.isDie()) {
-                        StdDraw.picture(5.5, 8.5, "Image/J1.png");
-                        StdDraw.picture(12.5, 8.5, "Image/wasted.png");
-                        jeu.stop();
-                    } else if (IA.isDie()) {//REMETTRE LE J2
-                        StdDraw.picture(5.5, 8.5, "Image/J2.png");
-                        StdDraw.picture(12.5, 8.5, "Image/wasted.png");
-                        jeu.stop();
-                    }
-                    StdDraw.show(16);
-                    StdDraw.clear();
-
-
                 }
+
+
+                if (J1.isDie()) {
+                    StdDraw.picture(5.5, 8.5, "Image/J1.png");
+                    StdDraw.picture(12.5, 8.5, "Image/wasted.png");
+                    jeu.stop();
+                } else if (J2.isDie()) {
+                    StdDraw.picture(5.5, 8.5, "Image/J2.png");
+                    StdDraw.picture(12.5, 8.5, "Image/wasted.png");
+                    jeu.stop();
+                }
+                StdDraw.show(16);
+                StdDraw.clear();
 
 
             }
 
 
         }
+
+
     }
 }
+        }}
 
 
