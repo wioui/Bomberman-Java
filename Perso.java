@@ -1,14 +1,16 @@
 import java.util.LinkedList;
 import java.util.List;
+
+import edu.princeton.cs.introcs.StdDraw;
 public class Perso {
 
     protected String name;
     private float initx;
     private float inity;
-    private float x;
-    private float y;
+    protected float x;
+    protected float y;
     private int vie = 3;
-    private float vitesse = 0.04f;
+    protected float vitesse = 0.04f;
     private String couleur;
     private float taille = 0.6f;
     private Bombes bombe;
@@ -43,7 +45,7 @@ public class Perso {
         this.bouclier = false;
     }
 
-
+    
     public void affichageperso(float x, float y) {
         double beforex = (int) this.getX();
         double beforey = (int) this.getY();
@@ -380,10 +382,21 @@ public class Perso {
 
 
     }
-
+    
     public void die() {
         if (this.getVie() <= 0) {
+        	boolean delai = false;
             this.die = true;
+            Audio wasted = new Audio("son/wasted.mp3");
+            wasted.play();
+            
+            delai = true;
+            
+            if (delai==true){
+            Audio victoire = new Audio("son/victoire.wav");
+            victoire.play();
+            }
+           
         }
     }
 

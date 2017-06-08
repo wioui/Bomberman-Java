@@ -47,7 +47,9 @@ public class Bombes {
 		boolean exploR=true;
 		boolean exploL=true;
 		boolean exploall=true;
-		
+		Audio explosion =new Audio("son/explosion.wav");
+		explosion.play();
+		explosion.stop();
 		
 		this.animationTime = System.currentTimeMillis()+1500;
 		
@@ -312,6 +314,9 @@ public class Bombes {
 						if(Main.listPerso.get(i).listBomb.get(j).getBlocx()==blocx && Main.listPerso.get(i).listBomb.get(j).getBlocy()==blocy){
 							
 							Main.listPerso.get(i).listBomb.get(j).setExplosiontime(0);
+							Audio explosionforte =new Audio("son/explosionforte.wav");
+							explosionforte.play();
+							
 						}
 					}
 					
