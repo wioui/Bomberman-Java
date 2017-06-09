@@ -319,6 +319,9 @@ public class Perso {
 
     public void takeBonus(Map laby, int blocx, int blocy, StatPlayer statPlayer) {
 
+
+
+
         if (laby.getLaby()[blocx][blocy] == 10) {
             laby.setLaby(blocx, blocy, 2);
             for (int i = 0; i < this.listBomb.size(); i++) {
@@ -428,6 +431,11 @@ public class Perso {
     public void die() {
         if (this.getVie() <= 0) {
             this.die = true;
+            Audio wasted = new Audio("son/wasted.wav");
+            Audio victoire = new Audio("son/victoire.wav");
+
+            wasted.play();
+            victoire.play();
         }
     }
 

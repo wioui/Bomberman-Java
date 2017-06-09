@@ -18,6 +18,8 @@ public class Main {
 
     public static void main(String[] args) {
 
+        Audio menu = new Audio("son/menu.WAV");
+        Audio jeu = new Audio("son/KONG.WAV");
 
         StdDraw.setCanvasSize(24*30, 22*30);
         StdDraw.setXscale(-3, 21);
@@ -41,6 +43,7 @@ public class Main {
                 StdDraw.picture(10.5, 8.5, "Image/bomberman2.png");
                 while (choixPerso1 == null || choixPerso2 == null) {
 
+                    menu.loop();
                     if (choosePlayer) {
 
                         if ((5 < StdDraw.mouseY() && 7 > StdDraw.mouseY()) && (7.2 < StdDraw.mouseX() && 8.8 > StdDraw.mouseX()) && StdDraw.mousePressed()) {
@@ -123,6 +126,8 @@ public class Main {
                     }
                 }
 
+                menu.stop();
+                jeu.loop();
 
                 GameControl Conf1 = new GameControl(90, 83, 81, 68, 88);
                 GameControl Conf2 = new GameControl(38, 40, 37, 39, 32);
@@ -177,6 +182,7 @@ public class Main {
                     }
 
                     if (J1.isDie() || J2.isDie()) {
+                        jeu.stop();
                         if (J1.isDie()) {
                             StdDraw.picture(5.5, 8.5, "Image/J1.png");
                             StdDraw.picture(12.5, 8.5, "Image/wasted.png");

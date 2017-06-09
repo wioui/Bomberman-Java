@@ -179,7 +179,10 @@ public class Bombes {
                 }
 
             }
-			
+
+            Audio explosion = new Audio("son/explosion.wav");
+			explosion.play();
+
 			Animation animationExplo = new Animation(this, this.id);
 			Main.listAnimationBomb.add(this.id, animationExplo);
             
@@ -289,6 +292,10 @@ public class Bombes {
 					explo=false;
 					if (this.canTakeLife) {
 						Main.listPerso.get(i).setVie(Main.listPerso.get(i).getVie() - 1);
+
+						Audio aie = new Audio("son/aie.wav");
+						aie.play();
+
 						canTakeLife = false;
 					}
 
@@ -318,6 +325,9 @@ public class Bombes {
 						if(Main.listPerso.get(i).listBomb.get(j).getBlocx()==blocx && Main.listPerso.get(i).listBomb.get(j).getBlocy()==blocy){
 							
 							Main.listPerso.get(i).listBomb.get(j).setExplosiontime(0);
+
+							Audio explosionForte = new Audio("son/explosionforte.wav");
+							explosionForte.play();
 						}
 					}
 					
