@@ -4,8 +4,10 @@
 public class StatPlayer {
 
 
-    private int speed = 1;
+
     private double time ;
+    private int playerSpeed1 = 8;
+    private int playerSpeed2 = 8;
     private boolean playerKick;
     private boolean playerShield;
     private boolean playerCross;
@@ -48,7 +50,7 @@ public class StatPlayer {
                     StdDraw.picture(-1.5,-1.4,returnHeadPlayer(couleur,0));
                     numberToImage(life,"normal",-0.4f,-3.8f);
                     numberToImage(numberBomb,"normal", 2.5f, -3.8f);
-                    numberToImage(this.speed,"normal", 5.4f, -3.8f);
+                    numberToImage(this.playerSpeed1,"normal", 5.4f, -3.8f);
                     numberToImage(this.range,"normal", 8.1f, -3.8f);
                     if (playerKick) {
                         StdDraw.picture(1.4, -1.7, "menu-in-game/super-bonus/football.png");
@@ -70,7 +72,7 @@ public class StatPlayer {
                     StdDraw.picture(19.5,-1.4,returnHeadPlayer(couleur,1));
                     numberToImage(life,"normal",11.5f,-3.8f);
                     numberToImage(numberBomb,"normal", 14.5f, -3.8f);
-                    numberToImage(this.speed,"normal", 17.1f, -3.8f);
+                    numberToImage(this.playerSpeed2,"normal", 17.1f, -3.8f);
                     numberToImage(this.range,"normal", 20f, -3.8f);
                     if (playerKick) {
                         StdDraw.picture(13.5, -1.7, "menu-in-game/super-bonus/football.png");
@@ -86,6 +88,31 @@ public class StatPlayer {
 
         }
     }
+
+    public void setSpeed (int plus,int id) {
+        if (plus == 1) {
+            if (id == 0) {
+                playerSpeed1 += 1;
+            } else if (id == 1) {
+                playerSpeed2 += 1;
+            }
+        }
+        else  {
+            if (id == 0) {
+                playerSpeed1 -= 1;
+            } else if (id == 1) {
+                playerSpeed2 -= 1;
+            }
+        }
+    }
+    /*public int getSpeed(int id) {
+        if (id == 0) {
+            return playerSpeed1;
+        }
+        else {
+            return playerSpeed2;
+        }
+    }*/
 
     public String returnHeadPlayer(String couleur, int id) {
         String urlToHead = "";
@@ -260,13 +287,7 @@ public class StatPlayer {
         }
     }
 
-    public int getSpeed() {
-        return speed;
-    }
 
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
 }
 
 

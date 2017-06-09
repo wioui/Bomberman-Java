@@ -31,9 +31,10 @@ public class Perso {
     private boolean canDie = true;
     private int lastKey;
     private int range;
+    private int id;
 
 
-    public Perso(String name, float initx, float inity, String couleur, GameControl conf) {
+    public Perso(String name, float initx, float inity, String couleur, GameControl conf, int id) {
         super();
         this.name = name;
         this.die = false;
@@ -51,6 +52,7 @@ public class Perso {
         this.bouclier = false;
         this.lastKey = 3;
         this.range = 3;
+        this.id = id;
     }
 
 
@@ -351,14 +353,16 @@ public class Perso {
         if (laby.getLaby()[blocx][blocy] == 14) {
             laby.setLaby(blocx, blocy, 2);
             if (this.getVitesse() < 0.130f) {
-                statPlayer.setSpeed(statPlayer.getSpeed()+1);
+                statPlayer.setSpeed(1,this.id);
+
                 this.setVitesse((float) (this.getVitesse() + 0.005f));
             }
         }
         if (laby.getLaby()[blocx][blocy] == 15) {
             laby.setLaby(blocx, blocy, 2);
             if (this.getVitesse() > 0) {
-                statPlayer.setSpeed(statPlayer.getSpeed()-1);
+                statPlayer.setSpeed(-1,this.id);
+
                 this.setVitesse((float) (this.getVitesse() - 0.005f));
             }
         }
