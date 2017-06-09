@@ -10,8 +10,8 @@ public class Main {
     public static LinkedList<Perso> listPerso = new LinkedList<>();
     static Map laby = new Map();
     static LinkedList<Animation> listAnimationBomb = new LinkedList<>();
-    static boolean choosePlayer = false;
-    static boolean play = true;
+    static boolean choosePlayer = true;
+
 
 
 
@@ -128,8 +128,8 @@ public class Main {
                 GameControl Conf2 = new GameControl(38, 40, 37, 39, 32);
 
 
-                Perso J1 = new Perso("J1", 1.5f, 1.5f, choixPerso1, Conf1);
-                Perso J2 = new Perso("J2", 19.5f, 15.5f, choixPerso2, Conf2);
+                Perso J1 = new Perso("J1", 1.5f, 1.4f, choixPerso1, Conf1);
+                Perso J2 = new Perso("J2", 19.5f, 15.4f, choixPerso2, Conf2);
 
 
 
